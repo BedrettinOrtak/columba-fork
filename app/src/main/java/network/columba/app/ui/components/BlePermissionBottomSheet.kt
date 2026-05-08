@@ -1,5 +1,4 @@
-package network.columba.app.ui.components
-
+﻿package network.columba.app.ui.components
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,27 +22,21 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
-
-/**
- * Material 3 bottom sheet that explains Bluetooth permission requirements
- * and provides an action to request permissions.
- *
- * @param onDismiss Callback when the bottom sheet is dismissed
- * @param onRequestPermissions Callback when user grants permission request
- * @param sheetState The state of the bottom sheet
- * @param rationale Optional custom rationale text (defaults to BlePermissionManager rationale)
- */
+import network.columba.app.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BlePermissionBottomSheet(
     onDismiss: () -> Unit,
     onRequestPermissions: () -> Unit,
     sheetState: SheetState,
-    rationale: String = getDefaultRationale(),
-    primaryActionLabel: String = "Grant Permissions",
+    rationale: String? = null,
+    primaryActionLabel: String? = null,
 ) {
+    val resolvedRationale = rationale ?: stringResource(R.string.ble_perm_rationale)
+    val resolvedActionLabel = primaryActionLabel ?: stringResource(R.string.ble_perm_grant)
     ModalBottomSheet(
         onDismissRequest = onDismiss,
         sheetState = sheetState,
@@ -57,7 +50,6 @@ fun BlePermissionBottomSheet(
                     .padding(horizontal = 24.dp),
             horizontalAlignment = Alignment.Start,
         ) {
-            // Icon and title
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth(),
@@ -69,54 +61,30 @@ fun BlePermissionBottomSheet(
                     modifier = Modifier.padding(end = 12.dp),
                 )
                 Text(
-                    text = "Bluetooth Permissions Required",
+                    text = stringResource(R.string.ble_perm_title),
                     style = MaterialTheme.typography.headlineSmall,
                     fontWeight = FontWeight.Bold,
                 )
             }
-
             Spacer(modifier = Modifier.height(16.dp))
-
-            // Rationale text
             Text(
-                text = rationale,
+                text = resolvedRationale,
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
             )
-
             Spacer(modifier = Modifier.height(24.dp))
-
-            // Action buttons
             Row(
                 modifier = Modifier.fillMaxWidth(),
                 horizontalArrangement = Arrangement.End,
             ) {
                 TextButton(onClick = onDismiss) {
-                    Text("Not Now")
+                    Text(stringResource(R.string.action_not_now))
                 }
                 Spacer(modifier = Modifier.width(8.dp))
                 Button(onClick = onRequestPermissions) {
-                    Text(primaryActionLabel)
+                    Text(resolvedActionLabel)
                 }
             }
         }
     }
-}
-
-/**
- * Default rationale text explaining why Bluetooth permissions are needed.
- * Matches the rationale provided by BlePermissionManager.
- */
-private fun getDefaultRationale(): String {
-    return """
-        Columba uses Bluetooth Low Energy (BLE) to communicate with nearby devices in a mesh network.
-
-        To enable this functionality, we need the following permissions:
-
-        • Bluetooth Scan: To discover nearby Reticulum peers
-        • Bluetooth Connect: To establish connections with peers
-        • Bluetooth Advertise: To broadcast your presence to other devices
-
-        These permissions allow Columba to create a decentralized, off-grid communication network.
-        """.trimIndent()
 }

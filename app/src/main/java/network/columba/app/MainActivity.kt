@@ -54,6 +54,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.content.ContextCompat
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -105,6 +106,7 @@ import network.columba.app.ui.screens.buildFocusInterfaceDetails
 import network.columba.app.ui.screens.flasher.RNodeFlasherScreen
 import network.columba.app.ui.screens.offlinemaps.OfflineMapDownloadScreen
 import network.columba.app.ui.screens.offlinemaps.OfflineMapsScreen
+import network.columba.app.ui.screens.onboarding.LanguageSelectionScreen
 import network.columba.app.ui.screens.onboarding.OnboardingPagerScreen
 import network.columba.app.ui.screens.tcpclient.TcpClientWizardScreen
 import network.columba.app.ui.theme.ColumbaTheme
@@ -229,6 +231,10 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(network.columba.app.util.LocaleHelper.onAttach(newBase))
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         // Install splash screen before super.onCreate()
@@ -536,25 +542,40 @@ sealed class PendingNavigation {
 
 sealed class Screen(
     val route: String,
-    val title: String,
+    val titleResId: Int,
     val icon: androidx.compose.ui.graphics.vector.ImageVector,
 ) {
-    object Welcome : Screen("welcome", "Welcome", Icons.Default.Sensors)
+    object LanguageSelection : Screen("language_selection", R.string.language_title, Icons.Default.Settings)
 
-    object IdentityUnlock : Screen("identity_unlock", "Restore Identity", Icons.Default.Sensors)
+    object Welcome : Screen("welcome", R.string.nav_welcome, Icons.Default.Sensors)
 
-    object Chats : Screen("chats", "Chats", Icons.Default.Chat)
+    object IdentityUnlock : Screen("identity_unlock", R.string.nav_restore_identity, Icons.Default.Sensors)
 
-    object Announces : Screen("announce_stream", "Announces", Icons.Default.Sensors)
+    object Chats : Screen("chats", R.string.nav_chats, Icons.Default.Chat)
 
-    object Contacts : Screen("contacts", "Contacts", Icons.Default.People)
+    object Announces : Screen("announce_stream", R.string.nav_announces, Icons.Default.Sensors)
 
-    object Map : Screen("map", "Map", Icons.Default.Map)
+    object Contacts : Screen("contacts", R.string.nav_contacts, Icons.Default.People)
 
-    object Identity : Screen("identity", "Network Status", Icons.Default.Info)
+    object Map : Screen("map", R.string.nav_map, Icons.Default.Map)
 
-    object Settings : Screen("settings", "Settings", Icons.Default.Settings)
+    object Identity : Screen("identity", R.string.nav_network_status, Icons.Default.Info)
+
+    object Settings : Screen("settings", R.string.nav_settings, Icons.Default.Settings)
 }
+
+/**
+ * Walk up the ContextWrapper chain to find the hosting Activity. Necessary
+ * because `LocalContext.current` in Compose may return a themed wrapper
+ * (e.g. ContextThemeWrapper) that is *not* itself a ComponentActivity, so a
+ * naive `as? ComponentActivity` cast can silently return null.
+ */
+private tailrec fun findActivity(context: android.content.Context?): androidx.activity.ComponentActivity? =
+    when (context) {
+        is androidx.activity.ComponentActivity -> context
+        is android.content.ContextWrapper -> findActivity(context.baseContext)
+        else -> null
+    }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -619,10 +640,14 @@ fun ColumbaNavigation(
     // is non-null, so the splash screen covers the async load and the user
     // never sees the Welcome wizard flash for a frame before the redirect.
     var startDestination by remember { mutableStateOf<String?>(null) }
+    val isLanguageSelectionCompleted = remember {
+        network.columba.app.util.LocaleHelper.isLanguageSelectionCompleted(context)
+    }
     LaunchedEffect(onboardingState.isLoading, onboardingState.hasCompletedOnboarding, needsIdentityUnlock) {
         if (onboardingState.isLoading || startDestination != null) return@LaunchedEffect
         startDestination =
             when {
+                !isLanguageSelectionCompleted -> Screen.LanguageSelection.route
                 onboardingState.hasCompletedOnboarding && needsIdentityUnlock -> Screen.IdentityUnlock.route
                 onboardingState.hasCompletedOnboarding -> Screen.Chats.route
                 else -> Screen.Welcome.route
@@ -913,8 +938,7 @@ fun ColumbaNavigation(
             when (currentRoute) {
                 Screen.Chats.route -> 0
                 Screen.Contacts.route -> 1
-                Screen.Map.route -> 2
-                Screen.Settings.route -> 3
+                Screen.Settings.route -> 2
                 else -> selectedTab // Keep current selection for nested screens
             }
     }
@@ -954,6 +978,7 @@ fun ColumbaNavigation(
     // Screens that should hide the bottom navigation bar
     val hideBottomNavScreens =
         listOf(
+            Screen.LanguageSelection.route,
             Screen.Welcome.route,
             "interface_management",
             "ble_connection_status",
@@ -985,7 +1010,6 @@ fun ColumbaNavigation(
         listOf(
             Screen.Chats,
             Screen.Contacts,
-            Screen.Map,
             Screen.Settings,
         )
 
@@ -1028,7 +1052,7 @@ fun ColumbaNavigation(
                             screens.forEachIndexed { index, screen ->
                                 NavigationBarItem(
                                     icon = { Icon(screen.icon, contentDescription = null) },
-                                    label = { Text(screen.title) },
+                                    label = { Text(stringResource(screen.titleResId)) },
                                     selected = selectedTab == index,
                                     onClick = {
                                         selectedTab = index
@@ -1069,6 +1093,48 @@ fun ColumbaNavigation(
                             popEnterTransition = { fadeIn(tween(150)) },
                             popExitTransition = { fadeOut(tween(75)) },
                         ) {
+                            composable(Screen.LanguageSelection.route) {
+                                // Show back affordance only when there is somewhere to return to.
+                                val canGoBack = navController.previousBackStackEntry != null
+                                LanguageSelectionScreen(
+                                    onLanguageSelected = { languageTag ->
+                                        Log.d("ColumbaNavigation", "Language selected: '$languageTag' — saving + navigating")
+                                        network.columba.app.util.LocaleHelper.saveLanguage(context, languageTag)
+                                        network.columba.app.util.LocaleHelper.setLanguageSelectionCompleted(
+                                            context,
+                                            completed = true,
+                                        )
+                                        settingsViewModel.setAppLanguage(languageTag)
+
+                                        // Always navigate forward immediately. We used to rely
+                                        // solely on Activity.recreate() to land on Welcome via
+                                        // start-destination resolution, but that path silently
+                                        // no-ops when LocalContext.current is a wrapped
+                                        // ContextThemeWrapper instead of the raw Activity, which
+                                        // left the user stuck on the language picker. An explicit
+                                        // navigate guarantees we move forward regardless of
+                                        // recreate's success.
+                                        navController.navigate(Screen.Welcome.route) {
+                                            popUpTo(Screen.LanguageSelection.route) { inclusive = true }
+                                            launchSingleTop = true
+                                        }
+
+                                        // Best-effort: also recreate the activity so the
+                                        // newly-saved locale is applied to the in-memory
+                                        // resource configuration. If it fails (no activity in
+                                        // the context chain) the saved language will simply
+                                        // take effect on the next cold start instead.
+                                        findActivity(context)?.recreate()
+                                    },
+                                    onBack =
+                                        if (canGoBack) {
+                                            { navController.popBackStack() }
+                                        } else {
+                                            null
+                                        },
+                                )
+                            }
+
                             composable(Screen.Welcome.route) {
                                 OnboardingPagerScreen(
                                     onOnboardingComplete = { navigateToRNodeWizard ->
@@ -1082,6 +1148,9 @@ fun ColumbaNavigation(
                                     },
                                     onImportData = {
                                         navController.navigate("migration")
+                                    },
+                                    onLanguageSelection = {
+                                        navController.navigate(Screen.LanguageSelection.route)
                                     },
                                 )
                             }
@@ -1993,16 +2062,6 @@ fun ColumbaNavigation(
                                     onVoiceCall = { profileCode ->
                                         val encodedHash = Uri.encode(destinationHash)
                                         navController.navigate("voice_call/$encodedHash?profileCode=$profileCode")
-                                    },
-                                    onLocateOnMap = { peerHash ->
-                                        mapViewModel.focusOnContact(peerHash)
-                                        navController.navigate(Screen.Map.route) {
-                                            popUpTo(navController.graph.startDestinationId) {
-                                                saveState = true
-                                            }
-                                            launchSingleTop = true
-                                            restoreState = true
-                                        }
                                     },
                                 )
                             }

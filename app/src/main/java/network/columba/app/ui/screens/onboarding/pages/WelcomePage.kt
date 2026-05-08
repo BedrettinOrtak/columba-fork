@@ -2,7 +2,6 @@ package network.columba.app.ui.screens.onboarding.pages
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -12,7 +11,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
@@ -22,9 +20,8 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -51,38 +48,20 @@ fun WelcomePage(
     ) {
         Spacer(modifier = Modifier.weight(1f))
 
-        // App icon: adaptive launcher background + foreground, circle-clipped.
-        // The gradient background fills the circle. The foreground vector bakes in
-        // both the adaptive-icon safe-zone padding and an internal scaleX/Y=0.65,
-        // so we apply a visual scale (no layout impact) to make the logo read at
-        // launcher scale.
-        Box(
-            modifier =
-                Modifier
-                    .size(120.dp)
-                    .clip(CircleShape),
-            contentAlignment = Alignment.Center,
-        ) {
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_background),
-                contentDescription = null,
-                modifier = Modifier.fillMaxSize(),
-            )
-            Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                contentDescription = "Columba",
-                modifier =
-                    Modifier
-                        .fillMaxSize()
-                        .scale(1.55f),
-            )
-        }
+        // App icon: just the dove, no background badge.
+        // Sits directly on the page background — the previous cream/gradient
+        // circle was distracting and looked like a stray white square.
+        Image(
+            painter = painterResource(id = R.drawable.ic_launcher_fg),
+            contentDescription = null,
+            modifier = Modifier.size(140.dp),
+        )
 
         Spacer(modifier = Modifier.height(24.dp))
 
         // Title
         Text(
-            text = "Welcome to Columba",
+            text = stringResource(R.string.onboarding_welcome_title),
             style = MaterialTheme.typography.headlineMedium,
             fontWeight = FontWeight.Bold,
             color = MaterialTheme.colorScheme.onBackground,
@@ -93,7 +72,7 @@ fun WelcomePage(
 
         // Subtitle
         Text(
-            text = "A private messenger that requires:",
+            text = stringResource(R.string.onboarding_welcome_subtitle),
             style = MaterialTheme.typography.bodyLarge,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
@@ -102,17 +81,17 @@ fun WelcomePage(
         Spacer(modifier = Modifier.height(24.dp))
 
         // Privacy features
-        PrivacyFeature(text = "No phone number")
+        PrivacyFeature(text = stringResource(R.string.onboarding_welcome_feature_no_phone))
         Spacer(modifier = Modifier.height(12.dp))
-        PrivacyFeature(text = "No email address")
+        PrivacyFeature(text = stringResource(R.string.onboarding_welcome_feature_no_email))
         Spacer(modifier = Modifier.height(12.dp))
-        PrivacyFeature(text = "No sign-up or accounts")
+        PrivacyFeature(text = stringResource(R.string.onboarding_welcome_feature_no_signup))
 
         Spacer(modifier = Modifier.height(32.dp))
 
         // Identity explanation
         Text(
-            text = "Your identity is generated and stored securely on your device. You control it completely.",
+            text = stringResource(R.string.onboarding_welcome_identity_description),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
             textAlign = TextAlign.Center,
@@ -131,7 +110,7 @@ fun WelcomePage(
             shape = RoundedCornerShape(12.dp),
         ) {
             Text(
-                text = "Get Started",
+                text = stringResource(R.string.onboarding_welcome_get_started),
                 style = MaterialTheme.typography.titleMedium,
             )
         }
@@ -143,7 +122,7 @@ fun WelcomePage(
             onClick = onRestoreFromBackup,
         ) {
             Text(
-                text = "Restore from backup",
+                text = stringResource(R.string.onboarding_welcome_restore_backup),
                 color = MaterialTheme.colorScheme.primary,
             )
         }

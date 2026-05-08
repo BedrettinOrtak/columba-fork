@@ -29,6 +29,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -53,7 +54,7 @@ fun AboutCard(
     val context = LocalContext.current
 
     CollapsibleSettingsCard(
-        title = "About",
+        title = stringResource(R.string.about_title),
         icon = Icons.Default.Info,
         isExpanded = isExpanded,
         onExpandedChange = onExpandedChange,
@@ -65,8 +66,8 @@ fun AboutCard(
         ) {
             // Logo and Header
             Image(
-                painter = painterResource(id = R.drawable.ic_launcher_foreground),
-                contentDescription = "Columba Logo",
+                painter = painterResource(id = R.drawable.ic_launcher_fg),
+                contentDescription = stringResource(R.string.about_logo_description),
                 modifier = Modifier.size(108.dp),
             )
 
@@ -77,7 +78,7 @@ fun AboutCard(
             )
 
             Text(
-                text = "Native Android messaging app using Bluetooth LE, TCP, or RNode (LoRa) over LXMF and Reticulum",
+                text = stringResource(R.string.about_tagline),
                 style = MaterialTheme.typography.bodyMedium,
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
                 textAlign = TextAlign.Center,
@@ -86,28 +87,28 @@ fun AboutCard(
             HorizontalDivider()
 
             // Version Information
-            InfoSection(title = "App Information") {
-                InfoRow("Version", systemInfo.appVersion)
-                InfoRow("Build Number", systemInfo.appBuildCode.toString())
-                InfoRow("Build Type", systemInfo.buildType.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() })
-                InfoRow("Git Commit", systemInfo.gitCommitHash)
-                InfoRow("Build Date", systemInfo.buildDate)
+            InfoSection(title = stringResource(R.string.about_section_app_info)) {
+                InfoRow(stringResource(R.string.about_field_version), systemInfo.appVersion)
+                InfoRow(stringResource(R.string.about_field_build_number), systemInfo.appBuildCode.toString())
+                InfoRow(stringResource(R.string.about_field_build_type), systemInfo.buildType.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() })
+                InfoRow(stringResource(R.string.about_field_git_commit), systemInfo.gitCommitHash)
+                InfoRow(stringResource(R.string.about_field_build_date), systemInfo.buildDate)
             }
 
             HorizontalDivider()
 
             // Device Information
-            InfoSection(title = "Device Information") {
-                InfoRow("Android Version", systemInfo.androidVersion)
-                InfoRow("API Level", systemInfo.apiLevel.toString())
-                InfoRow("Device Model", systemInfo.deviceModel)
-                InfoRow("Manufacturer", systemInfo.manufacturer)
+            InfoSection(title = stringResource(R.string.about_section_device_info)) {
+                InfoRow(stringResource(R.string.about_field_android_version), systemInfo.androidVersion)
+                InfoRow(stringResource(R.string.about_field_api_level), systemInfo.apiLevel.toString())
+                InfoRow(stringResource(R.string.about_field_device_model), systemInfo.deviceModel)
+                InfoRow(stringResource(R.string.about_field_manufacturer), systemInfo.manufacturer)
             }
 
             HorizontalDivider()
 
             // Protocol Versions
-            InfoSection(title = "Protocol Versions") {
+            InfoSection(title = stringResource(R.string.about_section_protocol_versions)) {
                 if (systemInfo.reticulumVersion != null) {
                     InfoRow("Reticulum", systemInfo.reticulumVersion)
                 }
@@ -126,17 +127,17 @@ fun AboutCard(
 
             // Identity
             if (systemInfo.identityHash != null) {
-                InfoSection(title = "Identity") {
-                    InfoRow("Identity Hash", systemInfo.identityHash)
+                InfoSection(title = stringResource(R.string.about_section_identity)) {
+                    InfoRow(stringResource(R.string.about_field_identity_hash), systemInfo.identityHash)
                 }
                 HorizontalDivider()
             }
 
             // Links
-            InfoSection(title = "Links & Resources") {
-                LinkButton("GitHub Repository", "https://github.com/torlando-tech/columba", context)
-                LinkButton("Report an Issue", "https://github.com/torlando-tech/columba/issues", context)
-                LinkButton("About Reticulum", "https://reticulum.network/", context)
+            InfoSection(title = stringResource(R.string.about_section_links)) {
+                LinkButton(stringResource(R.string.about_link_github), "https://github.com/torlando-tech/columba", context)
+                LinkButton(stringResource(R.string.about_link_report_issue), "https://github.com/torlando-tech/columba/issues", context)
+                LinkButton(stringResource(R.string.about_link_about_reticulum), "https://reticulum.network/", context)
             }
 
             HorizontalDivider()
@@ -147,12 +148,12 @@ fun AboutCard(
                 verticalArrangement = Arrangement.spacedBy(4.dp),
             ) {
                 Text(
-                    text = "GNU AGPLv3",
+                    text = stringResource(R.string.about_legal_license),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
                 Text(
-                    text = "© 2025–${network.columba.app.BuildConfig.COPYRIGHT_YEAR} Columba Contributors",
+                    text = stringResource(R.string.about_legal_copyright, network.columba.app.BuildConfig.COPYRIGHT_YEAR),
                     style = MaterialTheme.typography.bodySmall,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
@@ -162,7 +163,7 @@ fun AboutCard(
                         context.startActivity(intent)
                     },
                 ) {
-                    Text("View License", style = MaterialTheme.typography.bodySmall)
+                    Text(stringResource(R.string.about_view_license), style = MaterialTheme.typography.bodySmall)
                 }
             }
 
@@ -170,7 +171,7 @@ fun AboutCard(
 
             // Attribution
             Text(
-                text = "Built With",
+                text = stringResource(R.string.about_section_built_with),
                 style = MaterialTheme.typography.titleSmall,
                 fontWeight = FontWeight.Bold,
             )
@@ -188,14 +189,14 @@ fun AboutCard(
             HorizontalDivider()
 
             // Updates
-            InfoSection(title = "Updates") {
+            InfoSection(title = stringResource(R.string.about_section_updates)) {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalArrangement = Arrangement.SpaceBetween,
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = "Include pre-releases",
+                        text = stringResource(R.string.about_include_prereleases),
                         style = MaterialTheme.typography.bodyMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -215,13 +216,13 @@ fun AboutCard(
                         CircularProgressIndicator(modifier = Modifier.size(16.dp), strokeWidth = 2.dp)
                         Spacer(modifier = Modifier.width(8.dp))
                     }
-                    Text("Check for Updates")
+                    Text(stringResource(R.string.about_check_for_updates))
                 }
 
                 when (val result = updateCheckResult) {
                     is AppUpdateResult.UpToDate ->
                         Text(
-                            text = "Up to date (v${result.currentVersion})",
+                            text = stringResource(R.string.about_up_to_date, result.currentVersion),
                             style = MaterialTheme.typography.bodySmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                         )
@@ -232,7 +233,7 @@ fun AboutCard(
                             horizontalArrangement = Arrangement.SpaceBetween,
                         ) {
                             Text(
-                                text = "Update available: ${result.tagName}",
+                                text = stringResource(R.string.about_update_available, result.tagName),
                                 style = MaterialTheme.typography.bodySmall,
                             )
                             TextButton(
@@ -241,7 +242,7 @@ fun AboutCard(
                                     context.startActivity(intent)
                                 },
                             ) {
-                                Text("View Release")
+                                Text(stringResource(R.string.about_view_release))
                             }
                         }
                     is AppUpdateResult.Error ->
@@ -267,7 +268,7 @@ fun AboutCard(
                     modifier = Modifier.size(18.dp),
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Copy System Info")
+                Text(stringResource(R.string.about_copy_system_info))
             }
 
             // Report Bug Button
@@ -281,7 +282,7 @@ fun AboutCard(
                     modifier = Modifier.size(18.dp),
                 )
                 Spacer(modifier = Modifier.width(8.dp))
-                Text("Report Bug")
+                Text(stringResource(R.string.about_report_bug))
             }
         }
     }

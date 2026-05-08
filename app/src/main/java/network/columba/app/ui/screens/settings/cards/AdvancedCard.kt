@@ -13,8 +13,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import network.columba.app.R
 import network.columba.app.ui.components.CollapsibleSettingsCard
 
 /**
@@ -35,7 +37,7 @@ fun AdvancedCard(
     onTransportNodeToggle: (Boolean) -> Unit = {},
 ) {
     CollapsibleSettingsCard(
-        title = "Advanced",
+        title = stringResource(R.string.advanced_title),
         icon = Icons.Default.Tune,
         isExpanded = isExpanded,
         onExpandedChange = onExpandedChange,
@@ -56,7 +58,7 @@ fun AdvancedCard(
                     tint = MaterialTheme.colorScheme.primary,
                 )
                 Text(
-                    text = "Transport Node",
+                    text = stringResource(R.string.advanced_transport_node),
                     style = MaterialTheme.typography.bodyLarge,
                     fontWeight = FontWeight.Medium,
                 )
@@ -67,14 +69,7 @@ fun AdvancedCard(
             )
         }
         Text(
-            text =
-                "Forward traffic for the mesh network. When disabled, this device will only " +
-                    "handle its own traffic and won't relay messages for other peers. " +
-                    "It's generally not recommended for mobile devices to be transport nodes. " +
-                    "They are less likely to maintain a fixed position in the network, and thus " +
-                    "can negatively impact multihop routing. Enabling this will increase data " +
-                    "usage and battery drain. However, in a BLE-only mesh, it's required for " +
-                    "multi-hop messaging.",
+            text = stringResource(R.string.advanced_transport_node_description),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )

@@ -67,7 +67,6 @@ import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Block
 import androidx.compose.material.icons.filled.BrokenImage
-import androidx.compose.material.icons.filled.Call
 import androidx.compose.material.icons.filled.Circle
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.CloudDownload
@@ -77,11 +76,8 @@ import androidx.compose.material.icons.filled.Image
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Link
 import androidx.compose.material.icons.filled.LocationOff
-import androidx.compose.material.icons.filled.LocationOn
-import androidx.compose.material.icons.filled.Map
 import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -135,7 +131,6 @@ import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalViewConfiguration
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.TextLayoutResult
@@ -179,7 +174,6 @@ import network.columba.app.ui.components.SwipeableMessageBubble
 import network.columba.app.ui.components.SyncStatusBottomSheet
 import network.columba.app.ui.components.simpleVerticalScrollbar
 import network.columba.app.ui.model.CodecProfile
-import network.columba.app.ui.model.LocationSharingState
 import network.columba.app.ui.theme.MeshConnected
 import network.columba.app.ui.theme.MeshOffline
 import network.columba.app.ui.util.rememberLifecycleTickerMillis
@@ -345,7 +339,6 @@ fun MessagingScreen(
     onPeerClick: () -> Unit = {},
     onViewMessageDetails: (messageId: String) -> Unit = {},
     onVoiceCall: (profileCode: Int) -> Unit = {},
-    onLocateOnMap: (peerHash: String) -> Unit = {},
     viewModel: MessagingViewModel = hiltViewModel(),
 ) {
     val pagingItems = viewModel.messages.collectAsLazyPagingItems()
@@ -443,8 +436,6 @@ fun MessagingScreen(
     val decodedImages by viewModel.decodedImages.collectAsStateWithLifecycle()
 
     // Location sharing state
-    val locationSharingState by viewModel.locationSharingState.collectAsStateWithLifecycle()
-    val hasContactLocation by viewModel.hasContactLocation.collectAsStateWithLifecycle()
     var showShareLocationSheet by remember { mutableStateOf(false) }
     val shareLocationSheetState = rememberModalBottomSheetState()
     var showLocationPermissionSheet by remember { mutableStateOf(false) }
@@ -908,79 +899,6 @@ fun MessagingScreen(
                     }
                 },
                 actions = {
-                    // Voice call button
-                    IconButton(
-                        onClick = {
-                            scope.launch {
-                                isProbingLinkSpeed = true
-                                recommendedCodecProfile = viewModel.getRecommendedCodecProfile()
-                                isProbingLinkSpeed = false
-                                showCodecSelectionDialog = true
-                            }
-                        },
-                        enabled = !isProbingLinkSpeed,
-                    ) {
-                        if (isProbingLinkSpeed) {
-                            CircularProgressIndicator(
-                                modifier = Modifier.size(24.dp),
-                                strokeWidth = 2.dp,
-                            )
-                        } else {
-                            Icon(
-                                imageVector = Icons.Default.Call,
-                                contentDescription = "Voice call",
-                                tint = MaterialTheme.colorScheme.onSurfaceVariant,
-                            )
-                        }
-                    }
-
-                    // Location sharing button
-                    IconButton(
-                        onClick = {
-                            // Check if we're actively sharing with this peer
-                            val isSharingWithPeer =
-                                locationSharingState == LocationSharingState.SHARING_WITH_THEM ||
-                                    locationSharingState == LocationSharingState.MUTUAL
-
-                            if (isSharingWithPeer) {
-                                // Show confirmation to stop sharing
-                                showStopSharingDialog = true
-                            } else if (LocationPermissionManager.hasPermission(context)) {
-                                showShareLocationSheet = true
-                            } else {
-                                showLocationPermissionSheet = true
-                            }
-                        },
-                    ) {
-                        Icon(
-                            imageVector =
-                                if (locationSharingState != LocationSharingState.NONE) {
-                                    Icons.Default.LocationOn
-                                } else {
-                                    Icons.Outlined.LocationOn
-                                },
-                            contentDescription = "Share location",
-                            tint =
-                                if (locationSharingState != LocationSharingState.NONE) {
-                                    MaterialTheme.colorScheme.primary
-                                } else {
-                                    MaterialTheme.colorScheme.onSurfaceVariant
-                                },
-                        )
-                    }
-
-                    // Locate on map button (only visible when contact has a known location)
-                    if (hasContactLocation) {
-                        IconButton(
-                            onClick = { onLocateOnMap(destinationHash) },
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.Map,
-                                contentDescription = stringResource(R.string.locate_on_map),
-                                tint = MaterialTheme.colorScheme.primary,
-                            )
-                        }
-                    }
 
                     // Star toggle button for contact status
                     StarToggleButton(

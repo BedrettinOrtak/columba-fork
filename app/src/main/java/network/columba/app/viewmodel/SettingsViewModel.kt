@@ -60,6 +60,7 @@ enum class SettingsCardId {
     ADVANCED,
     ABOUT,
     SHARED_INSTANCE_BANNER,
+    LANGUAGE,
 }
 
 @androidx.compose.runtime.Immutable
@@ -168,6 +169,8 @@ data class SettingsState(
     val includePrereleaseUpdates: Boolean = false,
     // Message sort order: false = received time (default), true = sent time
     val sortMessagesBySentTime: Boolean = false,
+    // App language tag (BCP-47), "" = system default
+    val appLanguage: String = "",
 )
 
 @Suppress("TooManyFunctions", "LargeClass") // ViewModel with many user interaction methods is expected
@@ -241,6 +244,8 @@ class SettingsViewModel
             loadContacts()
             // Load update checker settings and maybe check on startup
             loadUpdateSettings()
+            // Load language preference
+            loadLanguagePreference()
             // Always start sync state monitoring (no infinite loops, needed for UI)
             startSyncStateMonitor()
             if (enableMonitors) {
@@ -1697,6 +1702,31 @@ class SettingsViewModel
                 settingsRepository.setSortMessagesBySentTime(enabled)
                 Log.d(TAG, "Sort messages by sent time: $enabled")
             }
+        }
+
+        // Language methods
+
+        /**
+         * Load language preference from the repository.
+         */
+        private fun loadLanguagePreference() {
+            viewModelScope.launch {
+                settingsRepository.languageFlow.collect { language ->
+                    _state.update { it.copy(appLanguage = language) }
+                }
+            }
+        }
+
+        /**
+         * Save the app language preference.
+         * The caller is responsible for recreating the Activity to apply the change.
+         *
+         * @param language BCP-47 language tag (e.g. "tr", "fa", "ku", "en") or "" for system default.
+         */
+        fun setAppLanguage(language: String) {
+            settingsRepository.saveLanguage(language)
+            _state.update { it.copy(appLanguage = language) }
+            Log.d(TAG, "App language set to: ${language.ifEmpty { "system" }}")
         }
 
         // Image compression methods

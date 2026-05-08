@@ -1,6 +1,8 @@
 package network.columba.app.ui.screens.onboarding
 
 import androidx.compose.runtime.Immutable
+import androidx.annotation.StringRes
+import network.columba.app.R
 
 /**
  * State for the paged onboarding flow.
@@ -26,30 +28,60 @@ data class OnboardingState(
  * Simplified version of the full InterfaceConfig for user selection.
  */
 enum class OnboardingInterfaceType(
-    val displayName: String,
-    val description: String,
-    val secondaryDescription: String? = null,
+    @StringRes val displayNameRes: Int,
+    @StringRes val descriptionRes: Int,
+    @StringRes val secondaryDescriptionRes: Int? = null,
 ) {
     AUTO(
-        displayName = "Local WiFi",
-        description = "Discover peers on your local network",
-        secondaryDescription = "No internet required",
+        displayNameRes = R.string.onboarding_connectivity_interface_auto,
+        descriptionRes = R.string.onboarding_connectivity_interface_auto_desc,
+        secondaryDescriptionRes = R.string.onboarding_connectivity_interface_auto_secondary,
     ),
     BLE(
-        displayName = "Bluetooth LE",
-        description = "Connect directly to nearby devices",
-        secondaryDescription = "Requires Bluetooth permissions",
+        displayNameRes = R.string.onboarding_connectivity_interface_ble,
+        descriptionRes = R.string.onboarding_connectivity_interface_ble_desc,
+        secondaryDescriptionRes = R.string.onboarding_connectivity_interface_ble_secondary,
     ),
     TCP(
-        displayName = "Internet (TCP)",
-        description = "Connect to the global Reticulum network",
-        secondaryDescription = "Requires internet connection",
+        displayNameRes = R.string.onboarding_connectivity_interface_tcp,
+        descriptionRes = R.string.onboarding_connectivity_interface_tcp_desc,
+        secondaryDescriptionRes = R.string.onboarding_connectivity_interface_tcp_secondary,
     ),
     RNODE(
-        displayName = "LoRa Radio",
-        description = "Long-range mesh via RNode hardware",
-        secondaryDescription = "Requires external hardware - configure in Settings",
+        displayNameRes = R.string.onboarding_connectivity_interface_rnode,
+        descriptionRes = R.string.onboarding_connectivity_interface_rnode_desc,
+        secondaryDescriptionRes = R.string.onboarding_connectivity_interface_rnode_secondary,
     ),
+
+    ;
+
+    // Backward compatibility for tests and non-UI call sites that still assert English labels.
+    val displayName: String
+        get() =
+            when (this) {
+                AUTO -> "Local WiFi"
+                BLE -> "Bluetooth LE"
+                TCP -> "Internet (TCP)"
+                RNODE -> "LoRa Radio"
+            }
+
+    val description: String
+        get() =
+            when (this) {
+                AUTO -> "Discover peers on your local network"
+                BLE -> "Connect directly to nearby devices"
+                TCP -> "Connect to the global Reticulum network"
+                RNODE -> "Long-range mesh via RNode hardware"
+            }
+
+    val secondaryDescription: String?
+        get() =
+            when (this) {
+                AUTO -> "No internet required"
+                BLE -> "Requires Bluetooth permissions"
+                TCP -> "Requires internet connection"
+                RNODE -> "Requires external hardware - configure in Settings"
+            }
 }
 
 /**

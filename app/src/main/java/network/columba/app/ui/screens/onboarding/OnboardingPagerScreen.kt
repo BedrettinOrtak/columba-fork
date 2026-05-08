@@ -4,6 +4,8 @@ import android.Manifest
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Language
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,12 +18,14 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.windowInsetsPadding
 import androidx.compose.foundation.pager.HorizontalPager
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -36,11 +40,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import network.columba.app.R
 import network.columba.app.ui.screens.onboarding.pages.CompletePage
 import network.columba.app.ui.screens.onboarding.pages.ConnectivityPage
 import network.columba.app.ui.screens.onboarding.pages.IdentityPage
@@ -63,6 +69,7 @@ import kotlinx.coroutines.launch
 fun OnboardingPagerScreen(
     onOnboardingComplete: (navigateToRNodeWizard: Boolean) -> Unit,
     onImportData: () -> Unit,
+    onLanguageSelection: () -> Unit,
     viewModel: OnboardingViewModel = hiltViewModel(),
     debugViewModel: DebugViewModel = hiltViewModel(),
 ) {
@@ -159,6 +166,7 @@ fun OnboardingPagerScreen(
                 // Top bar with Skip button
                 TopBar(
                     currentPage = pagerState.currentPage,
+                    onLanguageSelection = onLanguageSelection,
                     onSkip = {
                         viewModel.skipOnboarding { onOnboardingComplete(false) }
                     },
@@ -299,6 +307,7 @@ fun OnboardingPagerScreen(
 @Composable
 private fun TopBar(
     currentPage: Int,
+    onLanguageSelection: () -> Unit,
     onSkip: () -> Unit,
     enabled: Boolean,
     modifier: Modifier = Modifier,
@@ -309,6 +318,23 @@ private fun TopBar(
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp, vertical = 8.dp),
     ) {
+        TextButton(
+            onClick = onLanguageSelection,
+            enabled = enabled,
+            modifier = Modifier.align(Alignment.CenterStart),
+        ) {
+            Icon(
+                imageVector = Icons.Default.Language,
+                contentDescription = null,
+                tint = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            Spacer(modifier = Modifier.size(6.dp))
+            Text(
+                text = stringResource(R.string.language_title),
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+        }
+
         // Skip button (not shown on last page)
         if (currentPage < ONBOARDING_PAGE_COUNT - 1) {
             TextButton(
@@ -317,7 +343,7 @@ private fun TopBar(
                 modifier = Modifier.align(Alignment.CenterEnd),
             ) {
                 Text(
-                    text = "Skip",
+                    text = stringResource(R.string.onboarding_action_skip),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                 )
             }

@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="action_confirm">تأیید</string>
+    <string name="action_cancel">لغو</string>
+    <string name="action_collapse">جمع کردن</string>
+    <string name="action_expand">گسترش</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">تنظیمات</string>
+    <string name="settings_system_info_copied">اطلاعات سیستم در کلیپ‌بورد کپی شد</string>
+    <string name="settings_bug_report_copied">گزارش خطا در کلیپ‌بورد کپی شد</string>
+    <string name="settings_shared_instance_available">نمونه مشترک در دسترس است</string>
+    <string name="settings_shared_instance_switch">تغییر</string>
+    <string name="settings_location_permission_info">برای تغییر به مجوزها ← موقعیت مکانی بروید</string>
+
+    <!-- Network card -->
+    <string name="network_title">شبکه</string>
+    <string name="network_status_description">وضعیت شبکه Reticulum، رابط‌های فعال، اتصالات BLE و تشخیص اتصال را نظارت کنید.</string>
+    <string name="network_interfaces_disabled_description">مدیریت رابط هنگام استفاده از نمونه مشترک سیستم غیرفعال است.</string>
+    <string name="network_interfaces_description">نحوه اتصال دستگاه به شبکه Reticulum را پیکربندی کنید. اتصالات TCP، کشف خودکار، LoRa (از طریق RNode) یا رابط‌های BLE اضافه کنید.</string>
+    <string name="network_view_status">مشاهده وضعیت شبکه</string>
+    <string name="network_manage_interfaces">مدیریت رابط‌ها</string>
+
+    <!-- Identity card -->
+    <string name="identity_title">هویت</string>
+    <string name="identity_view_description">هویت خود را مشاهده و اشتراک‌گذاری کنید، نام نمایشی خود را ویرایش کنید و کدهای QR برای اشتراک‌گذاری مخاطبین را مدیریت کنید.</string>
+    <string name="identity_manage_description">چندین هویت برای زمینه‌های مختلف ایجاد و مدیریت کنید (کار، شخصی، ناشناس).</string>
+    <string name="identity_view_my_identity">مشاهده هویت من</string>
+    <string name="identity_manage_identities">مدیریت هویت‌ها</string>
+
+    <!-- Privacy card -->
+    <string name="privacy_title">حریم خصوصی</string>
+    <string name="privacy_block_on_description">فقط مخاطبین می‌توانند برای شما پیام بفرستند. پیام‌های فرستندگان ناشناس بی‌سروصدا حذف می‌شوند.</string>
+    <string name="privacy_block_off_description">هر کسی می‌تواند برای شما پیام بفرستد، از جمله فرستندگان ناشناس.</string>
+    <string name="privacy_blocked_users">کاربران مسدودشده</string>
+
+    <!-- Notifications card -->
+    <string name="notifications_title">اعلان‌ها</string>
+    <string name="notifications_enabled_description">تنظیمات اعلان برای پیام‌ها، اعلام‌ها و رویدادهای بلوتوث را مدیریت کنید.</string>
+    <string name="notifications_disabled_description">همه اعلان‌ها غیرفعال هستند. برای دریافت هشدارهای پیام‌ها و رویدادها فعال کنید.</string>
+    <string name="notifications_manage">مدیریت اعلان‌ها</string>
+
+    <!-- Auto announce card -->
+    <string name="auto_announce_title">اعلام خودکار</string>
+    <string name="auto_announce_description">در فواصل زمانی منظم به طور خودکار حضور خود را در شبکه اعلام کنید. این به کاربران دیگر کمک می‌کند شما را پیدا کنند.</string>
+    <string name="auto_announce_interval_single">فاصله اعلام: ۱ ساعت</string>
+    <string name="auto_announce_interval_plural">فاصله اعلام: %1$d ساعت</string>
+    <string name="auto_announce_custom">سفارشی</string>
+    <string name="auto_announce_custom_with_value">سفارشی (%1$dس)</string>
+    <string name="auto_announce_last_hours_ago">آخرین اعلام: %1$dس %2$dd پیش</string>
+    <string name="auto_announce_last_minutes_ago">آخرین اعلام: %1$dd پیش</string>
+    <string name="auto_announce_last_just_now">آخرین اعلام: همین الان</string>
+    <string name="auto_announce_none_sent">هنوز هیچ اعلامی ارسال نشده</string>
+    <string name="auto_announce_next_soon">اعلام بعدی: به زودی</string>
+    <string name="auto_announce_next_hours">اعلام بعدی در: %1$dس %2$dd</string>
+    <string name="auto_announce_next_minutes">اعلام بعدی در: %1$dd</string>
+    <string name="auto_announce_announcing">در حال اعلام…</string>
+    <string name="auto_announce_now">الان اعلام کن</string>
+    <string name="auto_announce_success">اعلام ارسال شد!</string>
+    <string name="auto_announce_error">خطا: %1$s</string>
+    <string name="auto_announce_custom_dialog_title">فاصله سفارشی</string>
+    <string name="auto_announce_custom_dialog_text">فاصله اعلام را وارد کنید (۱–۱۲ ساعت):</string>
+    <string name="auto_announce_hours_label">ساعت</string>
+    <string name="auto_announce_value_range_error">مقدار باید بین ۱ تا ۱۲ باشد</string>
+
+    <!-- Image compression card -->
+    <string name="image_compression_title">فشرده‌سازی تصویر</string>
+    <string name="image_compression_description">سطح فشرده‌سازی برای پیوست‌های تصویری را انتخاب کنید. حالت خودکار نوع شبکه شما را تشخیص داده و بهترین تنظیم را انتخاب می‌کند.</string>
+    <string name="image_compression_slow_warning">رابط‌های کند (LoRa/BLE) فعال هستند. ارسال تصاویر بزرگ ممکن است خیلی طول بکشد یا شکست بخورد.</string>
+
+    <!-- Battery & Background card -->
+    <string name="battery_title">باتری و پس‌زمینه</string>
+    <string name="battery_description">انتخاب کنید Boran چقدر قوی Reticulum بومی را در پس‌زمینه اجرا کند. تغییرات بلافاصله اعمال می‌شوند.</string>
+    <string name="battery_exempted_description">معافیت از بهینه‌سازی باتری اعطا شد. Boran می‌تواند در حین خواب عمیق در پس‌زمینه قابل اعتمادتر اجرا شود.</string>
+    <string name="battery_not_exempted_description">بهینه‌سازی باتری اندروید هنوز فعال است. نمایه باتری فوق کار پس‌زمینه را کاهش می‌دهد، اما اندروید ممکن است شبکه پس‌زمینه را تأخیر داده یا متوقف کند مگر اینکه Boran معاف شده باشد.</string>
+    <string name="battery_view_settings">مشاهده تنظیمات باتری</string>
+    <string name="battery_request_exemption">درخواست معافیت</string>
+    <string name="battery_open_settings_manually">باز کردن دستی تنظیمات باتری</string>
+
+    <!-- Advanced card -->
+    <string name="advanced_title">پیشرفته</string>
+    <string name="advanced_transport_node">گره انتقال</string>
+    <string name="advanced_transport_node_description">ترافیک شبکه mesh را انتقال می‌دهد. هنگام غیرفعال بودن، این دستگاه فقط ترافیک خود را مدیریت می‌کند و پیام‌ها را برای کاربران دیگر رله نمی‌کند. به طور کلی توصیه نمی‌شود دستگاه‌های موبایل گره‌های انتقال باشند. احتمال کمتری دارند موقعیت ثابتی در شبکه حفظ کنند و بنابراین می‌توانند مسیریابی چندگانه را منفی تحت تأثیر قرار دهند. فعال کردن این گزینه مصرف داده و تخلیه باتری را افزایش می‌دهد. با این حال، در شبکه‌ای که فقط BLE دارد، برای ارسال پیام چند گامه ضروری است.</string>
+
+    <!-- Language card -->
+    <string name="language_title">زبان</string>
+    <string name="language_description">زبان مورد نظر خود را برای رابط برنامه انتخاب کنید.</string>
+    <string name="language_system_default">پیش‌فرض سیستم</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_kurdish">Kurdî</string>
+
+    <!-- Startup language selection -->
+    <string name="first_launch_language_title">زبان خود را انتخاب کنید</string>
+    <string name="first_launch_language_subtitle">پیش از راه‌اندازی، زبان برنامه را انتخاب کنید</string>
+    <string name="first_launch_language_hint">بعداً می‌توانید آن را در تنظیمات تغییر دهید.</string>
+
+    <!-- Settings extras -->
+    <string name="settings_share_identity">اشتراک‌گذاری هویت</string>
+    <string name="settings_developer_title">تنظیمات توسعه‌دهنده</string>
+    <string name="settings_developer_locked">قفل‌شده</string>
+    <string name="settings_developer_unlocked">باز</string>
+    <string name="settings_developer_lock">قفل کردن</string>
+    <string name="settings_developer_unlock">باز کردن</string>
+    <string name="settings_password">رمز عبور</string>
+    <string name="settings_wrong_password">رمز عبور اشتباه است</string>
+
+    <!-- Onboarding common -->
+    <string name="onboarding_action_back">بازگشت</string>
+    <string name="onboarding_action_continue">ادامه</string>
+    <string name="onboarding_action_enable">فعال‌سازی</string>
+    <string name="onboarding_action_skip">رد کردن</string>
+
+    <!-- Onboarding welcome -->
+    <string name="onboarding_welcome_title">به Boran خوش آمدید</string>
+    <string name="onboarding_welcome_subtitle">پیام‌رسان خصوصی که نیاز ندارد:</string>
+    <string name="onboarding_welcome_feature_no_phone">شماره تلفن</string>
+    <string name="onboarding_welcome_feature_no_email">آدرس ایمیل</string>
+    <string name="onboarding_welcome_feature_no_signup">ثبت‌نام یا حساب کاربری</string>
+    <string name="onboarding_welcome_identity_description">هویت شما به‌صورت امن روی دستگاهتان ساخته و ذخیره می‌شود. کنترل کامل آن دست شماست.</string>
+    <string name="onboarding_welcome_get_started">شروع</string>
+    <string name="onboarding_welcome_restore_backup">بازیابی از پشتیبان</string>
+
+    <!-- Onboarding identity -->
+    <string name="onboarding_identity_title">هویت شما</string>
+    <string name="onboarding_identity_subtitle">یک نام نمایشی انتخاب کنید که دیگران ببینند:</string>
+    <string name="onboarding_identity_display_name_label">نام نمایشی</string>
+    <string name="onboarding_identity_display_name_placeholder">همتای ناشناس</string>
+    <string name="onboarding_identity_helper">هر زمان می‌توانید این را تغییر دهید یا برای زمینه‌های مختلف چند هویت بسازید.</string>
+
+    <!-- Onboarding connectivity -->
+    <string name="onboarding_connectivity_title">چطور متصل می‌شوید؟</string>
+    <string name="onboarding_connectivity_subtitle">شبکه‌هایی که می‌خواهید استفاده کنید را انتخاب کنید:</string>
+    <string name="onboarding_connectivity_permissions_denied">مجوزها رد شدند</string>
+    <string name="onboarding_connectivity_permissions_granted">مجوزها داده شدند</string>
+    <string name="onboarding_connectivity_helper">بعداً می‌توانید این‌ها را در تنظیمات پیکربندی کنید</string>
+    <string name="onboarding_connectivity_interface_auto">وای‌فای محلی</string>
+    <string name="onboarding_connectivity_interface_auto_desc">همتاها را در شبکه محلی پیدا کنید</string>
+    <string name="onboarding_connectivity_interface_auto_secondary">نیازی به اینترنت نیست</string>
+    <string name="onboarding_connectivity_interface_ble">بلوتوث LE</string>
+    <string name="onboarding_connectivity_interface_ble_desc">مستقیم به دستگاه‌های نزدیک وصل شوید</string>
+    <string name="onboarding_connectivity_interface_ble_secondary">نیازمند مجوزهای بلوتوث</string>
+    <string name="onboarding_connectivity_interface_tcp">اینترنت (TCP)</string>
+    <string name="onboarding_connectivity_interface_tcp_desc">به شبکه جهانی Reticulum متصل شوید</string>
+    <string name="onboarding_connectivity_interface_tcp_secondary">نیازمند اتصال اینترنت</string>
+    <string name="onboarding_connectivity_interface_rnode">رادیوی LoRa</string>
+    <string name="onboarding_connectivity_interface_rnode_desc">مش دوربرد با سخت‌افزار RNode</string>
+    <string name="onboarding_connectivity_interface_rnode_secondary">نیازمند سخت‌افزار خارجی - در تنظیمات پیکربندی کنید</string>
+
+    <!-- Onboarding permissions -->
+    <string name="onboarding_permissions_title">در ارتباط بمانید</string>
+    <string name="onboarding_permissions_subtitle">Boran می‌تواند در این موارد به شما اعلان بدهد:</string>
+    <string name="onboarding_permissions_feature_messages">وقتی پیام جدید می‌رسد</string>
+    <string name="onboarding_permissions_feature_contact_added">وقتی کسی شما را به مخاطبین اضافه می‌کند</string>
+    <string name="onboarding_permissions_feature_delivery">وقتی تایید تحویل دریافت می‌شود</string>
+    <string name="onboarding_permissions_notifications_title">اعلان‌ها</string>
+    <string name="onboarding_permissions_notifications_desc">برای پیام‌های جدید هشدار دریافت کنید</string>
+    <string name="onboarding_permissions_battery_title">باتری بدون محدودیت</string>
+    <string name="onboarding_permissions_battery_desc">حتی وقتی گوشی بیکار است پیام دریافت کنید</string>
+    <string name="onboarding_permissions_battery_secondary">جلوگیری از متوقف‌شدن Boran توسط اندروید</string>
+
+    <!-- Onboarding complete -->
+    <string name="onboarding_complete_title">همه‌چیز آماده است!</string>
+    <string name="onboarding_complete_summary_title">خلاصه</string>
+    <string name="onboarding_complete_summary_identity">هویت</string>
+    <string name="onboarding_complete_summary_networks">شبکه‌ها</string>
+    <string name="onboarding_complete_summary_none_selected">هیچ‌کدام انتخاب نشده</string>
+    <string name="onboarding_complete_summary_notifications">اعلان‌ها</string>
+    <string name="onboarding_complete_summary_battery">باتری</string>
+    <string name="onboarding_complete_enabled">فعال</string>
+    <string name="onboarding_complete_disabled">غیرفعال</string>
+    <string name="onboarding_complete_battery_unrestricted">بدون محدودیت</string>
+    <string name="onboarding_complete_battery_restricted">محدود</string>
+    <string name="onboarding_complete_show_qr">نمایش کد QR</string>
+    <string name="onboarding_complete_qr_hint">کد QR هویت خود را به اشتراک بگذارید تا دیگران شما را به مخاطبین اضافه کنند.</string>
+    <string name="onboarding_complete_configure_lora">پیکربندی رادیوی LoRa</string>
+    <string name="onboarding_complete_start_messaging">شروع پیام‌رسانی</string>
+    <string name="onboarding_complete_share_identity">اشتراک‌گذاری هویت</string>
+    <string name="onboarding_complete_share_text">من را در Reticulum اضافه کن:\n\n%1$s\n%2$s</string>
+
+    <!-- Bottom navigation tabs / screen titles -->
+    <string name="nav_chats">گفتگوها</string>
+    <string name="nav_announces">اطلاعیه‌ها</string>
+    <string name="nav_contacts">مخاطبین</string>
+    <string name="nav_map">نقشه</string>
+    <string name="nav_network_status">وضعیت شبکه</string>
+    <string name="nav_settings">تنظیمات</string>
+    <string name="nav_welcome">خوش آمدید</string>
+    <string name="nav_restore_identity">بازیابی هویت</string>
+
+    <!-- About card -->
+    <string name="about_title">درباره</string>
+    <string name="about_logo_description">لوگوی Columba</string>
+    <string name="about_tagline">برنامه پیام‌رسان بومی اندروید با استفاده از Bluetooth LE، TCP یا RNode (LoRa) روی LXMF و Reticulum</string>
+    <string name="about_section_app_info">اطلاعات برنامه</string>
+    <string name="about_section_device_info">اطلاعات دستگاه</string>
+    <string name="about_section_protocol_versions">نسخه‌های پروتکل</string>
+    <string name="about_section_identity">هویت</string>
+    <string name="about_section_links">پیوندها و منابع</string>
+    <string name="about_section_built_with">ساخته شده با</string>
+    <string name="about_section_updates">به‌روزرسانی‌ها</string>
+    <string name="about_field_version">نسخه</string>
+    <string name="about_field_build_number">شماره ساخت</string>
+    <string name="about_field_build_type">نوع ساخت</string>
+    <string name="about_field_git_commit">Git Commit</string>
+    <string name="about_field_build_date">تاریخ ساخت</string>
+    <string name="about_field_android_version">نسخه اندروید</string>
+    <string name="about_field_api_level">سطح API</string>
+    <string name="about_field_device_model">مدل دستگاه</string>
+    <string name="about_field_manufacturer">سازنده</string>
+    <string name="about_field_identity_hash">هش هویت</string>
+    <string name="about_link_github">مخزن GitHub</string>
+    <string name="about_link_report_issue">گزارش مشکل</string>
+    <string name="about_link_about_reticulum">درباره Reticulum</string>
+    <string name="about_legal_license">GNU AGPLv3</string>
+    <string name="about_legal_copyright">© ۲۰۲۵–%1$s مشارکت‌کنندگان Columba</string>
+    <string name="about_view_license">مشاهده مجوز</string>
+    <string name="about_include_prereleases">شامل پیش‌نسخه‌ها</string>
+    <string name="about_check_for_updates">بررسی به‌روزرسانی</string>
+    <string name="about_up_to_date">به‌روز (نسخه %1$s)</string>
+    <string name="about_update_available">به‌روزرسانی موجود: %1$s</string>
+    <string name="about_view_release">مشاهده انتشار</string>
+    <string name="about_copy_system_info">کپی اطلاعات سیستم</string>
+    <string name="about_report_bug">گزارش خطا</string>
+
+    <!-- پروفایل‌های باتری -->
+    <string name="battery_profile_max_battery">حداکثر باتری</string>
+    <string name="battery_profile_max_battery_desc">بهترین عمر باتری با شبکه پس‌زمینه و کشف کندتر.</string>
+    <string name="battery_profile_balanced">متعادل</string>
+    <string name="battery_profile_balanced_desc">عمر باتری خوب با پاسخگویی عادی برای بیشتر کاربران.</string>
+    <string name="battery_profile_performance">عملکرد</string>
+    <string name="battery_profile_performance_desc">سریع‌ترین بازیابی مسیر و پاسخگویی شبکه با هزینه باتری بیشتر.</string>
+
+    <!-- کارت تحویل و دریافت پیام -->
+    <string name="msgdelivery_title">تحویل و دریافت پیام</string>
+    <string name="msgdelivery_description">نحوه ارسال و دریافت پیام‌ها از طریق رله را پیکربندی کنید.</string>
+    <string name="msgdelivery_default_method">روش پیش‌فرض تحویل</string>
+    <string name="msgdelivery_method_direct">مستقیم (مبتنی بر لینک)</string>
+    <string name="msgdelivery_method_direct_desc">یک لینک برقرار می‌کند، اندازه نامحدود، با تلاش مجدد</string>
+    <string name="msgdelivery_method_propagated">انتشاری (از طریق رله)</string>
+    <string name="msgdelivery_method_propagated_desc">پیام را برای گیرندگان آفلاین در رله ذخیره می‌کند</string>
+    <string name="msgdelivery_retry_relay_title">در صورت خطا از طریق رله تلاش مجدد</string>
+    <string name="msgdelivery_retry_relay_desc">اگر تحویل مستقیم ناموفق باشد از طریق رله تلاش می‌کند</string>
+    <string name="msgdelivery_my_relay">رله من</string>
+    <string name="msgdelivery_auto_select">انتخاب خودکار نزدیک‌ترین</string>
+    <string name="msgdelivery_currently">در حال حاضر: %1$s</string>
+    <string name="msgdelivery_use_specific">از رله مشخص استفاده کن</string>
+    <string name="msgdelivery_no_relay_selected">رله‌ای انتخاب نشده</string>
+    <string name="msgdelivery_tap_to_select">برای انتخاب رله دیگر ضربه بزنید</string>
+    <string name="msgdelivery_no_relay_configured">رله‌ای پیکربندی نشده. در انتظار اطلاعیه گره‌های انتشار…</string>
+    <string name="msgdelivery_select_from_available">از رله‌های موجود انتخاب کنید</string>
+    <string name="msgdelivery_or_enter_manually">یا هش رله را به‌صورت دستی وارد کنید:</string>
+    <string name="msgdelivery_enter_relay_hash">هش مقصد رله را وارد کنید:</string>
+    <string name="msgdelivery_destination_hash">هش مقصد</string>
+    <string name="msgdelivery_hash_placeholder">۳۲ کاراکتر هگز</string>
+    <string name="msgdelivery_nickname_optional">نام مستعار (اختیاری)</string>
+    <string name="msgdelivery_nickname_placeholder">مثلاً رله خانه من</string>
+    <string name="msgdelivery_set_as_relay">به عنوان رله تنظیم کن</string>
+    <string name="msgdelivery_section_retrieval">دریافت پیام</string>
+    <string name="msgdelivery_auto_retrieve">دریافت خودکار از رله</string>
+    <string name="msgdelivery_auto_retrieve_desc">به‌طور دوره‌ای پیام‌ها را بررسی کن</string>
+    <string name="msgdelivery_sync_now">همگام‌سازی اکنون</string>
+    <string name="msgdelivery_syncing">در حال همگام‌سازی…</string>
+    <string name="msgdelivery_section_size">حجم پیام ورودی</string>
+    <string name="msgdelivery_size_description">حداکثر حجم پیام‌های قابل قبول. پیام‌های بزرگ‌تر رد می‌شوند.</string>
+    <string name="msgdelivery_size_unlimited">نامحدود</string>
+    <string name="msgdelivery_custom">سفارشی</string>
+    <string name="msgdelivery_section_sort">ترتیب پیام‌ها</string>
+    <string name="msgdelivery_sort_title">مرتب‌سازی بر اساس زمان فرستنده</string>
+    <string name="msgdelivery_sort_on_desc">پیام‌ها بر اساس ساعت فرستنده مرتب می‌شوند (ممکن است نادرست باشد)</string>
+    <string name="msgdelivery_sort_off_desc">پیام‌ها بر اساس زمان دریافت مرتب می‌شوند</string>
+    <string name="msgdelivery_select_relay_dialog_title">انتخاب رله</string>
+    <string name="msgdelivery_no_propagation_nodes">هنوز گره انتشاری کشف نشده. منتظر اطلاعیه‌ها بمانید یا یک هش وارد کنید.</string>
+    <string name="msgdelivery_view_all_relays">مشاهده همه رله‌ها…</string>
+    <string name="msgdelivery_current">فعلی</string>
+    <string name="msgdelivery_custom_interval_title">بازه دریافت سفارشی</string>
+    <string name="msgdelivery_custom_interval_text">بازه دریافت را وارد کنید (۱–۱۲ ساعت):</string>
+    <string name="msgdelivery_seconds">ثانیه</string>
+    <string name="msgdelivery_custom_size_title">حد سفارشی حجم</string>
+    <string name="msgdelivery_custom_size_text">حداکثر حجم پیام را وارد کنید (۱–۱۲۸ مگابایت):</string>
+    <string name="msgdelivery_mb">مگابایت</string>
+    <string name="msgdelivery_auto_label">(خودکار)</string>
+    <string name="action_cancel_generic">لغو</string>
+    <string name="action_confirm_generic">تأیید</string>
+    <string name="action_delete">حذف</string>
+    <string name="action_block">مسدود کردن</string>
+    <string name="action_not_now">الان نه</string>
+
+    <!-- صفحه گفتگوها -->
+    <string name="chats_title">گفتگوها</string>
+    <string name="chats_subtitle_one">%1$d گفتگو</string>
+    <string name="chats_subtitle_other">%1$d گفتگو</string>
+    <string name="chats_qr_code">کد QR</string>
+    <string name="chats_sync_messages">همگام‌سازی پیام‌ها</string>
+    <string name="chats_sync_complete">همگام‌سازی کامل شد</string>
+    <string name="chats_sync_complete_with_count">همگام‌سازی کامل: %1$d پیام جدید</string>
+    <string name="chats_sync_failed">همگام‌سازی ناموفق: %1$s</string>
+    <string name="chats_sync_no_relay">رله‌ای پیکربندی نشده</string>
+    <string name="chats_sync_timed_out">زمان همگام‌سازی به پایان رسید</string>
+    <string name="chats_saved_contact">مخاطب ذخیره شد</string>
+    <string name="chats_removed_contact">مخاطب حذف شد</string>
+    <string name="chats_save_to_contacts">ذخیره در مخاطبین</string>
+    <string name="chats_remove_from_contacts">حذف از مخاطبین</string>
+    <string name="chats_marked_as_unread">به‌عنوان نخوانده علامت‌گذاری شد</string>
+    <string name="chats_deleted_conversation">گفتگو با %1$s حذف شد</string>
+    <string name="chats_blocked_user">%1$s مسدود شد</string>
+    <string name="chats_share_identity">اشتراک هویت</string>
+    <string name="chats_no_conversations_yet">هنوز گفتگویی نیست</string>
+    <string name="chats_messages_will_appear">پیام‌ها از همتایان اینجا نمایش داده می‌شوند</string>
+    <string name="chats_loading">در حال بارگذاری گفتگوها…</string>
+    <string name="chats_search_placeholder">جستجو در گفتگوها…</string>
+    <string name="chats_mark_as_unread">علامت‌گذاری به‌عنوان نخوانده</string>
+    <string name="chats_view_peer_details">مشاهده جزئیات همتا</string>
+    <string name="chats_delete_conversation">حذف گفتگو</string>
+    <string name="chats_block_user">مسدود کردن کاربر</string>
+    <string name="chats_delete_conversation_title">گفتگو حذف شود؟</string>
+    <string name="chats_delete_conversation_text">آیا مطمئنید می‌خواهید گفتگوی خود با %1$s را حذف کنید؟ همه پیام‌ها برای همیشه حذف می‌شوند.</string>
+    <string name="chats_block_title">%1$s مسدود شود؟</string>
+    <string name="chats_block_text">نمی‌توانند برای شما پیام بفرستند. گفتگوی آن‌ها از فهرست پنهان می‌شود.</string>
+    <string name="chats_also_delete">گفتگو و پیام‌ها هم حذف شوند</string>
+    <string name="chats_also_blackhole">اطلاعیه‌هایشان را هم رله نکن (blackhole)</string>
+    <string name="chats_blackhole_transport_disabled">انتقال در حال حاضر غیرفعال است. این هویت هرگاه انتقال فعال شود blackhole خواهد شد.</string>
+
+    <!-- پنل اجازه بلوتوث -->
+    <string name="ble_perm_title">اجازه بلوتوث لازم است</string>
+    <string name="ble_perm_grant">اعطای اجازه</string>
+    <string name="ble_perm_rationale">Columba برای ارتباط با دستگاه‌های نزدیک در شبکه مش از Bluetooth Low Energy (BLE) استفاده می‌کند.\n\nبرای فعال‌سازی این قابلیت به اجازه‌های زیر نیاز است:\n\n• اسکن بلوتوث: برای کشف همتایان Reticulum نزدیک\n• اتصال بلوتوث: برای برقراری ارتباط با همتایان\n• تبلیغ بلوتوث: برای اعلام حضور به دستگاه‌های دیگر\n\nاین اجازه‌ها به Columba امکان ساختن یک شبکه ارتباطی غیرمتمرکز و بدون اینترنت را می‌دهند.</string>
+</resources>
+

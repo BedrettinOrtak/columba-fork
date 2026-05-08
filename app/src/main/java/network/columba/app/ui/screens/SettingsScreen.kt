@@ -1,6 +1,7 @@
 package network.columba.app.ui.screens
 
 import android.Manifest
+import android.app.Activity
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Context
@@ -10,25 +11,37 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.consumeWindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Build
+import androidx.compose.material.icons.filled.Lock
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarDuration
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.SnackbarResult
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberModalBottomSheetState
@@ -44,12 +57,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleEventObserver
 import androidx.lifecycle.compose.LocalLifecycleOwner
 import kotlinx.coroutines.launch
+import network.columba.app.R
 import network.columba.app.ui.components.BackgroundLocationPermissionBottomSheet
 import network.columba.app.ui.components.LocationPermissionBottomSheet
 import network.columba.app.ui.components.ServiceRestartBanner
@@ -60,7 +76,9 @@ import network.columba.app.ui.screens.settings.cards.BatteryOptimizationCard
 import network.columba.app.ui.screens.settings.cards.DataMigrationCard
 import network.columba.app.ui.screens.settings.cards.IdentityCard
 import network.columba.app.ui.screens.settings.cards.ImageCompressionCard
+import network.columba.app.ui.screens.settings.cards.LanguageCard
 import network.columba.app.ui.screens.settings.cards.LocationSharingCard
+import network.columba.app.util.LocaleHelper
 import network.columba.app.ui.screens.settings.cards.MapSourcesCard
 import network.columba.app.ui.screens.settings.cards.MessageDeliveryRetrievalCard
 import network.columba.app.ui.screens.settings.cards.NetworkCard
@@ -114,6 +132,20 @@ fun SettingsScreen(
     // Crash report dialog state
     var showCrashDialog by remember { mutableStateOf(false) }
     var pendingCrashReport by remember { mutableStateOf<CrashReport?>(null) }
+
+    // Developer settings lock state
+    val developerSettingsPassword = "register123!A"
+    var isDeveloperSettingsUnlocked by remember { mutableStateOf(false) }
+    var showDeveloperPasswordDialog by remember { mutableStateOf(false) }
+    var developerPasswordInput by remember { mutableStateOf("") }
+    var developerPasswordError by remember { mutableStateOf<String?>(null) }
+
+    fun lockDeveloperSettings() {
+        isDeveloperSettingsUnlocked = false
+        showDeveloperPasswordDialog = false
+        developerPasswordInput = ""
+        developerPasswordError = null
+    }
 
     // Location permission state (for indicator in LocationSharingCard)
     var hasForegroundPermission by remember {
@@ -236,26 +268,6 @@ fun SettingsScreen(
                         .padding(16.dp),
                 verticalArrangement = Arrangement.spacedBy(16.dp),
             ) {
-                val showSharedInstanceBanner =
-                    shouldShowSharedInstanceBanner(
-                        isSharedInstance = state.isSharedInstance,
-                        sharedInstanceOnline = state.sharedInstanceOnline,
-                        wasUsingSharedInstance = state.wasUsingSharedInstance,
-                        isRestarting = state.isRestarting,
-                    )
-                if (showSharedInstanceBanner) {
-                    SharedInstanceBannerCard(
-                        isExpanded = state.isSharedInstanceBannerExpanded,
-                        isUsingSharedInstance = state.isSharedInstance,
-                        rpcKey = state.rpcKey,
-                        wasUsingSharedInstance = state.wasUsingSharedInstance,
-                        sharedInstanceOnline = state.sharedInstanceOnline,
-                        onExpandToggle = { viewModel.toggleSharedInstanceBannerExpanded(it) },
-                        onTogglePreferOwnInstance = { viewModel.togglePreferOwnInstance(it) },
-                        onRpcKeyChange = { viewModel.saveRpcKey(it) },
-                    )
-                }
-
                 if (state.isRestarting) {
                     ServiceRestartBanner()
                 }
@@ -293,11 +305,6 @@ fun SettingsScreen(
                     onManageClick = onNavigateToNotifications,
                 )
 
-                VoiceCallPermissionsCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.VOICE_CALL_PERMISSIONS.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.VOICE_CALL_PERMISSIONS, it) },
-                )
-
                 AutoAnnounceCard(
                     isExpanded = state.cardExpansionStates[SettingsCardId.AUTO_ANNOUNCE.name] ?: false,
                     onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.AUTO_ANNOUNCE, it) },
@@ -311,116 +318,6 @@ fun SettingsScreen(
                     onToggle = { viewModel.toggleAutoAnnounce(it) },
                     onIntervalChange = { viewModel.setAnnounceInterval(it) },
                     onManualAnnounce = { viewModel.triggerManualAnnounce() },
-                )
-
-                LocationSharingCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.LOCATION_SHARING.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.LOCATION_SHARING, it) },
-                    enabled = state.locationSharingEnabled,
-                    onEnabledChange = { viewModel.setLocationSharingEnabled(it) },
-                    activeSessions = state.activeSharingSessions,
-                    onStopSharing = { viewModel.stopSharingWith(it) },
-                    onStopAllSharing = { viewModel.stopAllSharing() },
-                    defaultDuration = state.defaultSharingDuration,
-                    onDefaultDurationChange = { viewModel.setDefaultSharingDuration(it) },
-                    locationPrecisionRadius = state.locationPrecisionRadius,
-                    onLocationPrecisionRadiusChange = { viewModel.setLocationPrecisionRadius(it) },
-                    // Telemetry collector props
-                    telemetryCollectorEnabled = state.telemetryCollectorEnabled,
-                    telemetryCollectorAddress = state.telemetryCollectorAddress,
-                    telemetrySendIntervalSeconds = state.telemetrySendIntervalSeconds,
-                    lastTelemetrySendTime = state.lastTelemetrySendTime,
-                    isSendingTelemetry = state.isSendingTelemetry,
-                    onTelemetryEnabledChange = { enabled ->
-                        if (enabled) {
-                            if (LocationPermissionManager.hasTelemetryBackgroundPermission(context)) {
-                                viewModel.setTelemetryCollectorEnabled(true)
-                            } else if (LocationPermissionManager.hasPermission(context)) {
-                                // Foreground location is granted, show background permission sheet.
-                                pendingTelemetryAction = { viewModel.setTelemetryCollectorEnabled(true) }
-                                showBackgroundLocationSheet = true
-                            } else {
-                                // Show permission sheet, then enable after permission granted
-                                pendingTelemetryAction = { viewModel.setTelemetryCollectorEnabled(true) }
-                                showTelemetryPermissionSheet = true
-                            }
-                        } else {
-                            // Disabling doesn't need permission
-                            viewModel.setTelemetryCollectorEnabled(false)
-                        }
-                    },
-                    onTelemetryCollectorAddressChange = { viewModel.setTelemetryCollectorAddress(it) },
-                    onTelemetrySendIntervalChange = { viewModel.setTelemetrySendInterval(it) },
-                    onTelemetrySendNow = {
-                        // Check permission before sending
-                        if (LocationPermissionManager.hasPermission(context)) {
-                            viewModel.sendTelemetryNow()
-                        } else {
-                            pendingTelemetryAction = { viewModel.sendTelemetryNow() }
-                            showTelemetryPermissionSheet = true
-                        }
-                    },
-                    // Telemetry request props
-                    telemetryRequestEnabled = state.telemetryRequestEnabled,
-                    telemetryRequestIntervalSeconds = state.telemetryRequestIntervalSeconds,
-                    lastTelemetryRequestTime = state.lastTelemetryRequestTime,
-                    isRequestingTelemetry = state.isRequestingTelemetry,
-                    onTelemetryRequestEnabledChange = { viewModel.setTelemetryRequestEnabled(it) },
-                    onTelemetryRequestIntervalChange = { viewModel.setTelemetryRequestInterval(it) },
-                    onRequestTelemetryNow = { viewModel.requestTelemetryNow() },
-                    // Telemetry host mode props
-                    telemetryHostModeEnabled = state.telemetryHostModeEnabled,
-                    onTelemetryHostModeEnabledChange = { viewModel.setTelemetryHostModeEnabled(it) },
-                    // Allowed requesters props
-                    telemetryAllowedRequesters = state.telemetryAllowedRequesters,
-                    contacts = state.contacts,
-                    onTelemetryAllowedRequestersChange = { viewModel.setTelemetryAllowedRequesters(it) },
-                    // Local identity for "Myself" option in host picker
-                    localDestinationHash = state.destinationHash,
-                    localDisplayName = state.displayName.ifEmpty { state.defaultDisplayName },
-                    localIconName = state.iconName,
-                    localIconForegroundColor = state.iconForegroundColor,
-                    localIconBackgroundColor = state.iconBackgroundColor,
-                    // Background location permission indicator
-                    hasForegroundLocationPermission = hasForegroundPermission,
-                    hasBackgroundLocationPermission = hasBackgroundPermission,
-                    onBackgroundPermissionClick = {
-                        if (hasBackgroundPermission) {
-                            // Already granted — open app info, guide user to Permissions > Location
-                            Toast
-                                .makeText(
-                                    context,
-                                    "Go to Permissions > Location to change",
-                                    Toast.LENGTH_LONG,
-                                ).show()
-                            val intent =
-                                Intent(
-                                    Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
-                                    Uri.fromParts("package", context.packageName, null),
-                                )
-                            context.startActivity(intent)
-                        } else if (LocationPermissionManager.hasPermission(context)) {
-                            // Foreground granted but not background — show our custom sheet
-                            showBackgroundLocationSheet = true
-                        } else {
-                            // No foreground either — show foreground sheet first
-                            pendingTelemetryAction = null
-                            showTelemetryPermissionSheet = true
-                        }
-                    },
-                )
-
-                MapSourcesCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.MAP_SOURCES.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.MAP_SOURCES, it) },
-                    httpEnabled = state.mapSourceHttpEnabled,
-                    onHttpEnabledChange = { viewModel.setMapSourceHttpEnabled(it) },
-                    rmspEnabled = state.mapSourceRmspEnabled,
-                    onRmspEnabledChange = { viewModel.setMapSourceRmspEnabled(it) },
-                    markerDeclutterEnabled = state.mapMarkerDeclutterEnabled,
-                    onMarkerDeclutterEnabledChange = { viewModel.setMapMarkerDeclutterEnabled(it) },
-                    rmspServerCount = state.rmspServerCount,
-                    hasOfflineMaps = state.hasOfflineMaps,
                 )
 
                 MessageDeliveryRetrievalCard(
@@ -470,38 +367,11 @@ fun SettingsScreen(
                     onPresetChange = { viewModel.setImageCompressionPreset(it) },
                 )
 
-                ThemeSelectionCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.THEME.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.THEME, it) },
-                    selectedTheme = state.selectedTheme,
-                    customThemes = state.customThemes,
-                    onThemeChange = { viewModel.setTheme(it) },
-                    onNavigateToCustomThemes = onNavigateToCustomThemes,
-                )
-
                 BatteryOptimizationCard(
                     isExpanded = state.cardExpansionStates[SettingsCardId.BATTERY.name] ?: false,
                     onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.BATTERY, it) },
                     batteryProfile = state.batteryProfile,
                     onBatteryProfileChange = { viewModel.setBatteryProfile(it) },
-                )
-
-                DataMigrationCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.DATA_MIGRATION.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.DATA_MIGRATION, it) },
-                    onNavigateToMigration = onNavigateToMigration,
-                )
-
-                ShareColumbaCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.SHARE_COLUMBA.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.SHARE_COLUMBA, it) },
-                    onNavigateToApkSharing = onNavigateToApkSharing,
-                )
-
-                RNodeFlasherCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.RNODE_FLASHER.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.RNODE_FLASHER, it) },
-                    onOpenFlasher = onNavigateToFlasher,
                 )
 
                 AdvancedCard(
@@ -511,68 +381,298 @@ fun SettingsScreen(
                     onTransportNodeToggle = { viewModel.setTransportNodeEnabled(it) },
                 )
 
-                // About section
-                val systemInfo =
-                    remember(
-                        state.identityHash,
-                        state.reticulumVersion,
-                        state.lxmfVersion,
-                        state.bleReticulumVersion,
-                        state.lxstVersion,
+                LanguageCard(
+                    isExpanded = state.cardExpansionStates[SettingsCardId.LANGUAGE.name] ?: false,
+                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.LANGUAGE, it) },
+                    selectedLanguage = state.appLanguage,
+                    onLanguageChange = { tag ->
+                        viewModel.setAppLanguage(tag)
+                        LocaleHelper.saveLanguage(context, tag)
+                        (context as? Activity)?.recreate()
+                    },
+                )
+
+                Card(
+                    modifier =
+                        Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                if (!isDeveloperSettingsUnlocked) {
+                                    developerPasswordInput = ""
+                                    developerPasswordError = null
+                                    showDeveloperPasswordDialog = true
+                                }
+                            },
+                    colors =
+                        CardDefaults.cardColors(
+                            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+                        ),
+                ) {
+                    Row(
+                        modifier = Modifier.fillMaxWidth().padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically,
+                        horizontalArrangement = Arrangement.SpaceBetween,
                     ) {
-                        DeviceInfoUtil.getSystemInfo(
-                            context = context,
-                            identityHash = state.identityHash,
-                            reticulumVersion = state.reticulumVersion,
-                            lxmfVersion = state.lxmfVersion,
-                            bleReticulumVersion = state.bleReticulumVersion,
-                            lxstVersion = state.lxstVersion,
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(8.dp),
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.Build,
+                                contentDescription = null,
+                            )
+                            Column {
+                                Text(
+                                    text = stringResource(R.string.settings_developer_title),
+                                    style = MaterialTheme.typography.titleMedium,
+                                )
+                                Text(
+                                    text = if (isDeveloperSettingsUnlocked) stringResource(R.string.settings_developer_unlocked) else stringResource(R.string.settings_developer_locked),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                )
+                            }
+                        }
+
+                        TextButton(
+                            onClick = {
+                                if (isDeveloperSettingsUnlocked) {
+                                    lockDeveloperSettings()
+                                } else {
+                                    developerPasswordInput = ""
+                                    developerPasswordError = null
+                                    showDeveloperPasswordDialog = true
+                                }
+                            },
+                        ) {
+                            Text(if (isDeveloperSettingsUnlocked) stringResource(R.string.settings_developer_lock) else stringResource(R.string.settings_developer_unlock))
+                        }
+                    }
+                }
+
+                if (isDeveloperSettingsUnlocked) {
+                    val showSharedInstanceBanner =
+                        shouldShowSharedInstanceBanner(
+                            isSharedInstance = state.isSharedInstance,
+                            sharedInstanceOnline = state.sharedInstanceOnline,
+                            wasUsingSharedInstance = state.wasUsingSharedInstance,
+                            isRestarting = state.isRestarting,
+                        )
+                    if (showSharedInstanceBanner) {
+                        SharedInstanceBannerCard(
+                            isExpanded = state.isSharedInstanceBannerExpanded,
+                            isUsingSharedInstance = state.isSharedInstance,
+                            rpcKey = state.rpcKey,
+                            wasUsingSharedInstance = state.wasUsingSharedInstance,
+                            sharedInstanceOnline = state.sharedInstanceOnline,
+                            onExpandToggle = { viewModel.toggleSharedInstanceBannerExpanded(it) },
+                            onTogglePreferOwnInstance = { viewModel.togglePreferOwnInstance(it) },
+                            onRpcKeyChange = { viewModel.saveRpcKey(it) },
                         )
                     }
 
-                AboutCard(
-                    isExpanded = state.cardExpansionStates[SettingsCardId.ABOUT.name] ?: false,
-                    onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.ABOUT, it) },
-                    systemInfo = systemInfo,
-                    updateCheckResult = state.updateCheckResult,
-                    includePrereleaseUpdates = state.includePrereleaseUpdates,
-                    onCheckForUpdates = { viewModel.checkForUpdates() },
-                    onSetIncludePrereleaseUpdates = { viewModel.setIncludePrereleaseUpdates(it) },
-                    onCopySystemInfo = {
-                        val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                        val clip = ClipData.newPlainText("System Info", DeviceInfoUtil.formatForClipboard(systemInfo))
-                        clipboard.setPrimaryClip(clip)
+                    VoiceCallPermissionsCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.VOICE_CALL_PERMISSIONS.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.VOICE_CALL_PERMISSIONS, it) },
+                    )
 
-                        // Show snackbar confirmation
-                        coroutineScope.launch {
-                            snackbarHostState.showSnackbar(
-                                message = "System info copied to clipboard",
-                                duration = SnackbarDuration.Short,
+                    LocationSharingCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.LOCATION_SHARING.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.LOCATION_SHARING, it) },
+                        enabled = state.locationSharingEnabled,
+                        onEnabledChange = { viewModel.setLocationSharingEnabled(it) },
+                        activeSessions = state.activeSharingSessions,
+                        onStopSharing = { viewModel.stopSharingWith(it) },
+                        onStopAllSharing = { viewModel.stopAllSharing() },
+                        defaultDuration = state.defaultSharingDuration,
+                        onDefaultDurationChange = { viewModel.setDefaultSharingDuration(it) },
+                        locationPrecisionRadius = state.locationPrecisionRadius,
+                        onLocationPrecisionRadiusChange = { viewModel.setLocationPrecisionRadius(it) },
+                        // Telemetry collector props
+                        telemetryCollectorEnabled = state.telemetryCollectorEnabled,
+                        telemetryCollectorAddress = state.telemetryCollectorAddress,
+                        telemetrySendIntervalSeconds = state.telemetrySendIntervalSeconds,
+                        lastTelemetrySendTime = state.lastTelemetrySendTime,
+                        isSendingTelemetry = state.isSendingTelemetry,
+                        onTelemetryEnabledChange = { enabled ->
+                            if (enabled) {
+                                if (LocationPermissionManager.hasTelemetryBackgroundPermission(context)) {
+                                    viewModel.setTelemetryCollectorEnabled(true)
+                                } else if (LocationPermissionManager.hasPermission(context)) {
+                                    // Foreground location is granted, show background permission sheet.
+                                    pendingTelemetryAction = { viewModel.setTelemetryCollectorEnabled(true) }
+                                    showBackgroundLocationSheet = true
+                                } else {
+                                    // Show permission sheet, then enable after permission granted
+                                    pendingTelemetryAction = { viewModel.setTelemetryCollectorEnabled(true) }
+                                    showTelemetryPermissionSheet = true
+                                }
+                            } else {
+                                // Disabling doesn't need permission
+                                viewModel.setTelemetryCollectorEnabled(false)
+                            }
+                        },
+                        onTelemetryCollectorAddressChange = { viewModel.setTelemetryCollectorAddress(it) },
+                        onTelemetrySendIntervalChange = { viewModel.setTelemetrySendInterval(it) },
+                        onTelemetrySendNow = {
+                            // Check permission before sending
+                            if (LocationPermissionManager.hasPermission(context)) {
+                                viewModel.sendTelemetryNow()
+                            } else {
+                                pendingTelemetryAction = { viewModel.sendTelemetryNow() }
+                                showTelemetryPermissionSheet = true
+                            }
+                        },
+                        // Telemetry request props
+                        telemetryRequestEnabled = state.telemetryRequestEnabled,
+                        telemetryRequestIntervalSeconds = state.telemetryRequestIntervalSeconds,
+                        lastTelemetryRequestTime = state.lastTelemetryRequestTime,
+                        isRequestingTelemetry = state.isRequestingTelemetry,
+                        onTelemetryRequestEnabledChange = { viewModel.setTelemetryRequestEnabled(it) },
+                        onTelemetryRequestIntervalChange = { viewModel.setTelemetryRequestInterval(it) },
+                        onRequestTelemetryNow = { viewModel.requestTelemetryNow() },
+                        // Telemetry host mode props
+                        telemetryHostModeEnabled = state.telemetryHostModeEnabled,
+                        onTelemetryHostModeEnabledChange = { viewModel.setTelemetryHostModeEnabled(it) },
+                        // Allowed requesters props
+                        telemetryAllowedRequesters = state.telemetryAllowedRequesters,
+                        contacts = state.contacts,
+                        onTelemetryAllowedRequestersChange = { viewModel.setTelemetryAllowedRequesters(it) },
+                        // Local identity for "Myself" option in host picker
+                        localDestinationHash = state.destinationHash,
+                        localDisplayName = state.displayName.ifEmpty { state.defaultDisplayName },
+                        localIconName = state.iconName,
+                        localIconForegroundColor = state.iconForegroundColor,
+                        localIconBackgroundColor = state.iconBackgroundColor,
+                        // Background location permission indicator
+                        hasForegroundLocationPermission = hasForegroundPermission,
+                        hasBackgroundLocationPermission = hasBackgroundPermission,
+                        onBackgroundPermissionClick = {
+                            if (hasBackgroundPermission) {
+                                // Already granted — open app info, guide user to Permissions > Location
+                                Toast
+                                    .makeText(
+                                        context,
+                                        "Go to Permissions > Location to change",
+                                        Toast.LENGTH_LONG,
+                                    ).show()
+                                val intent =
+                                    Intent(
+                                        Settings.ACTION_APPLICATION_DETAILS_SETTINGS,
+                                        Uri.fromParts("package", context.packageName, null),
+                                    )
+                                context.startActivity(intent)
+                            } else if (LocationPermissionManager.hasPermission(context)) {
+                                // Foreground granted but not background — show our custom sheet
+                                showBackgroundLocationSheet = true
+                            } else {
+                                // No foreground either — show foreground sheet first
+                                pendingTelemetryAction = null
+                                showTelemetryPermissionSheet = true
+                            }
+                        },
+                    )
+
+                    MapSourcesCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.MAP_SOURCES.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.MAP_SOURCES, it) },
+                        httpEnabled = state.mapSourceHttpEnabled,
+                        onHttpEnabledChange = { viewModel.setMapSourceHttpEnabled(it) },
+                        rmspEnabled = state.mapSourceRmspEnabled,
+                        onRmspEnabledChange = { viewModel.setMapSourceRmspEnabled(it) },
+                        markerDeclutterEnabled = state.mapMarkerDeclutterEnabled,
+                        onMarkerDeclutterEnabledChange = { viewModel.setMapMarkerDeclutterEnabled(it) },
+                        rmspServerCount = state.rmspServerCount,
+                        hasOfflineMaps = state.hasOfflineMaps,
+                    )
+
+                    ThemeSelectionCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.THEME.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.THEME, it) },
+                        selectedTheme = state.selectedTheme,
+                        customThemes = state.customThemes,
+                        onThemeChange = { viewModel.setTheme(it) },
+                        onNavigateToCustomThemes = onNavigateToCustomThemes,
+                    )
+
+                    DataMigrationCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.DATA_MIGRATION.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.DATA_MIGRATION, it) },
+                        onNavigateToMigration = onNavigateToMigration,
+                    )
+
+                    ShareColumbaCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.SHARE_COLUMBA.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.SHARE_COLUMBA, it) },
+                        onNavigateToApkSharing = onNavigateToApkSharing,
+                    )
+
+                    RNodeFlasherCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.RNODE_FLASHER.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.RNODE_FLASHER, it) },
+                        onOpenFlasher = onNavigateToFlasher,
+                    )
+
+                    val systemInfo =
+                        remember(
+                            state.identityHash,
+                            state.reticulumVersion,
+                            state.lxmfVersion,
+                            state.bleReticulumVersion,
+                            state.lxstVersion,
+                        ) {
+                            DeviceInfoUtil.getSystemInfo(
+                                context = context,
+                                identityHash = state.identityHash,
+                                reticulumVersion = state.reticulumVersion,
+                                lxmfVersion = state.lxmfVersion,
+                                bleReticulumVersion = state.bleReticulumVersion,
+                                lxstVersion = state.lxstVersion,
                             )
                         }
-                    },
-                    onReportBug = {
-                        coroutineScope.launch {
-                            val report = crashReportManager.generateBugReport(systemInfo)
+
+                    AboutCard(
+                        isExpanded = state.cardExpansionStates[SettingsCardId.ABOUT.name] ?: false,
+                        onExpandedChange = { viewModel.toggleCardExpanded(SettingsCardId.ABOUT, it) },
+                        systemInfo = systemInfo,
+                        updateCheckResult = state.updateCheckResult,
+                        includePrereleaseUpdates = state.includePrereleaseUpdates,
+                        onCheckForUpdates = { viewModel.checkForUpdates() },
+                        onSetIncludePrereleaseUpdates = { viewModel.setIncludePrereleaseUpdates(it) },
+                        onCopySystemInfo = {
                             val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
-                            val clip = ClipData.newPlainText("Bug Report", report)
+                            val clip = ClipData.newPlainText("System Info", DeviceInfoUtil.formatForClipboard(systemInfo))
                             clipboard.setPrimaryClip(clip)
 
-                            // Open GitHub Issues in browser
-                            val intent =
-                                Intent(
-                                    Intent.ACTION_VIEW,
-                                    Uri.parse("https://github.com/torlando-tech/columba/issues/new"),
+                            coroutineScope.launch {
+                                snackbarHostState.showSnackbar(
+                                    message = "System info copied to clipboard",
+                                    duration = SnackbarDuration.Short,
                                 )
-                            context.startActivity(intent)
+                            }
+                        },
+                        onReportBug = {
+                            coroutineScope.launch {
+                                val report = crashReportManager.generateBugReport(systemInfo)
+                                val clipboard = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+                                val clip = ClipData.newPlainText("Bug Report", report)
+                                clipboard.setPrimaryClip(clip)
 
-                            snackbarHostState.showSnackbar(
-                                message = "Bug report copied to clipboard",
-                                duration = SnackbarDuration.Short,
-                            )
-                        }
-                    },
-                )
+                                val intent =
+                                    Intent(
+                                        Intent.ACTION_VIEW,
+                                        Uri.parse("https://github.com/torlando-tech/columba/issues/new"),
+                                    )
+                                context.startActivity(intent)
+
+                                snackbarHostState.showSnackbar(
+                                    message = "Bug report copied to clipboard",
+                                    duration = SnackbarDuration.Short,
+                                )
+                            }
+                        },
+                    )
+                }
 
                 // Bottom spacing for navigation bar
                 Spacer(modifier = Modifier.height(100.dp))
@@ -649,6 +749,70 @@ fun SettingsScreen(
                             duration = SnackbarDuration.Short,
                         )
                     }
+                },
+            )
+        }
+
+        if (showDeveloperPasswordDialog) {
+            AlertDialog(
+                onDismissRequest = {
+                    showDeveloperPasswordDialog = false
+                    developerPasswordError = null
+                },
+                title = { Text(stringResource(R.string.settings_developer_title)) },
+                text = {
+                    Column(verticalArrangement = Arrangement.spacedBy(8.dp)) {
+                        OutlinedTextField(
+                            value = developerPasswordInput,
+                            onValueChange = {
+                                developerPasswordInput = it
+                                developerPasswordError = null
+                            },
+                            label = { Text(stringResource(R.string.settings_password)) },
+                            singleLine = true,
+                            visualTransformation = PasswordVisualTransformation(),
+                        )
+                        developerPasswordError?.let { error ->
+                            Text(
+                                text = error,
+                                color = MaterialTheme.colorScheme.error,
+                                style = MaterialTheme.typography.bodySmall,
+                            )
+                        }
+                    }
+                },
+                confirmButton = {
+                    TextButton(
+                        onClick = {
+                            if (developerPasswordInput == developerSettingsPassword) {
+                                isDeveloperSettingsUnlocked = true
+                                showDeveloperPasswordDialog = false
+                                developerPasswordInput = ""
+                                developerPasswordError = null
+                            } else {
+                                developerPasswordError = context.getString(R.string.settings_wrong_password)
+                            }
+                        },
+                    ) {
+                        Text(stringResource(R.string.settings_developer_unlock))
+                    }
+                },
+                dismissButton = {
+                    TextButton(
+                        onClick = {
+                            showDeveloperPasswordDialog = false
+                            developerPasswordInput = ""
+                            developerPasswordError = null
+                        },
+                    ) {
+                        Text(stringResource(R.string.action_cancel))
+                    }
+                },
+                icon = {
+                    Icon(
+                        imageVector = Icons.Default.Lock,
+                        contentDescription = null,
+                    )
                 },
             )
         }

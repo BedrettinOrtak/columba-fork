@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="action_confirm">Onayla</string>
+    <string name="action_cancel">İptal</string>
+    <string name="action_collapse">Daralt</string>
+    <string name="action_expand">Genişlet</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Ayarlar</string>
+    <string name="settings_system_info_copied">Sistem bilgisi panoya kopyalandı</string>
+    <string name="settings_bug_report_copied">Hata raporu panoya kopyalandı</string>
+    <string name="settings_shared_instance_available">Paylaşılan örnek mevcut</string>
+    <string name="settings_shared_instance_switch">Geç</string>
+    <string name="settings_location_permission_info">Değiştirmek için İzinler → Konum\'a gidin</string>
+
+    <!-- Network card -->
+    <string name="network_title">Ağ</string>
+    <string name="network_status_description">Reticulum ağ durumunuzu, aktif arayüzleri, BLE bağlantılarını ve bağlantı tanılamalarını izleyin.</string>
+    <string name="network_interfaces_disabled_description">Paylaşılan sistem örneği kullanılırken arayüz yönetimi devre dışıdır.</string>
+    <string name="network_interfaces_description">Cihazınızın Reticulum ağına nasıl bağlandığını yapılandırın. TCP bağlantıları, otomatik keşif, LoRa (RNode aracılığıyla) veya BLE arayüzleri ekleyin.</string>
+    <string name="network_view_status">Ağ Durumunu Görüntüle</string>
+    <string name="network_manage_interfaces">Arayüzleri Yönet</string>
+
+    <!-- Identity card -->
+    <string name="identity_title">Kimlik</string>
+    <string name="identity_view_description">Kimliğinizi görüntüleyin, paylaşın, görünen adınızı düzenleyin ve kişi paylaşımı için QR kodlarını yönetin.</string>
+    <string name="identity_manage_description">Farklı bağlamlar için birden fazla kimlik oluşturun ve yönetin (iş, kişisel, anonim).</string>
+    <string name="identity_view_my_identity">Kimliğimi Görüntüle</string>
+    <string name="identity_manage_identities">Kimlikleri Yönet</string>
+
+    <!-- Privacy card -->
+    <string name="privacy_title">Gizlilik</string>
+    <string name="privacy_block_on_description">Yalnızca kişiler size mesaj gönderebilir. Bilinmeyen gönderenlerden gelen mesajlar sessizce silinir.</string>
+    <string name="privacy_block_off_description">Bilinmeyen gönderenler dahil herkes size mesaj gönderebilir.</string>
+    <string name="privacy_blocked_users">Engellenen Kullanıcılar</string>
+
+    <!-- Notifications card -->
+    <string name="notifications_title">Bildirimler</string>
+    <string name="notifications_enabled_description">Mesajlar, duyurular ve Bluetooth olayları için bildirim tercihlerini yönetin.</string>
+    <string name="notifications_disabled_description">Tüm bildirimler devre dışı. Mesajlar ve olaylar için uyarı almak üzere etkinleştirin.</string>
+    <string name="notifications_manage">Bildirimleri Yönet</string>
+
+    <!-- Auto announce card -->
+    <string name="auto_announce_title">Otomatik Duyuru</string>
+    <string name="auto_announce_description">Düzenli aralıklarla ağdaki varlığınızı otomatik olarak duyurun. Bu, diğer kullanıcıların sizi keşfetmesine yardımcı olur.</string>
+    <string name="auto_announce_interval_single">Duyuru Aralığı: 1 saat</string>
+    <string name="auto_announce_interval_plural">Duyuru Aralığı: %1$d saat</string>
+    <string name="auto_announce_custom">Özel</string>
+    <string name="auto_announce_custom_with_value">Özel (%1$ds)</string>
+    <string name="auto_announce_last_hours_ago">Son duyuru: %1$ds %2$dd önce</string>
+    <string name="auto_announce_last_minutes_ago">Son duyuru: %1$dd önce</string>
+    <string name="auto_announce_last_just_now">Son duyuru: hemen şimdi</string>
+    <string name="auto_announce_none_sent">Henüz duyuru gönderilmedi</string>
+    <string name="auto_announce_next_soon">Sonraki duyuru: yakında</string>
+    <string name="auto_announce_next_hours">Sonraki duyuru: %1$ds %2$dd sonra</string>
+    <string name="auto_announce_next_minutes">Sonraki duyuru: %1$dd sonra</string>
+    <string name="auto_announce_announcing">Duyuruluyor…</string>
+    <string name="auto_announce_now">Şimdi Duyur</string>
+    <string name="auto_announce_success">Duyuru gönderildi!</string>
+    <string name="auto_announce_error">Hata: %1$s</string>
+    <string name="auto_announce_custom_dialog_title">Özel Aralık</string>
+    <string name="auto_announce_custom_dialog_text">Duyuru aralığı girin (1–12 saat):</string>
+    <string name="auto_announce_hours_label">Saat</string>
+    <string name="auto_announce_value_range_error">Değer 1 ile 12 arasında olmalıdır</string>
+
+    <!-- Image compression card -->
+    <string name="image_compression_title">Görüntü Sıkıştırma</string>
+    <string name="image_compression_description">Görüntü ekleri için sıkıştırma seviyesini seçin. Otomatik mod ağ türünüzü algılar ve en iyi önayarı seçer.</string>
+    <string name="image_compression_slow_warning">Yavaş arayüzler (LoRa/BLE) etkin. Büyük görüntü göndermek çok uzun sürebilir veya başarısız olabilir.</string>
+
+    <!-- Battery & Background card -->
+    <string name="battery_title">Pil ve Arka Plan</string>
+    <string name="battery_description">Boran\'ın arka planda yerel Reticulum\'u ne kadar güçlü çalıştıracağını seçin. Değişiklikler hemen uygulanır.</string>
+    <string name="battery_exempted_description">Pil optimizasyonu muafiyeti verildi. Boran derin boşta kalma sırasında arka planda daha güvenilir çalışabilir.</string>
+    <string name="battery_not_exempted_description">Android pil optimizasyonu hâlâ etkin. Yukarıdaki pil profili arka plan işini azaltır, ancak Boran muaf tutulmadıkça Android arka plan ağını geciktirebilir veya sonlandırabilir.</string>
+    <string name="battery_view_settings">Pil Ayarlarını Görüntüle</string>
+    <string name="battery_request_exemption">Muafiyet İste</string>
+    <string name="battery_open_settings_manually">Pil Ayarlarını Manuel Aç</string>
+
+    <!-- Advanced card -->
+    <string name="advanced_title">Gelişmiş</string>
+    <string name="advanced_transport_node">Taşıma Düğümü</string>
+    <string name="advanced_transport_node_description">Mesh ağı için trafiği iletir. Devre dışı bırakıldığında bu cihaz yalnızca kendi trafiğini işler ve diğer kullanıcılar için mesaj iletmez. Mobil cihazların taşıma düğümü olması genellikle önerilmez. Ağdaki sabit bir konumu koruma olasılıkları düşüktür ve bu nedenle çok atlı yönlendirmeyi olumsuz etkileyebilir. Bu seçeneği etkinleştirmek veri kullanımını ve pil tüketimini artırır. Ancak yalnızca BLE ağında çok atlı mesajlaşma için gereklidir.</string>
+
+    <!-- Language card -->
+    <string name="language_title">Dil</string>
+    <string name="language_description">Uygulama arayüzü için tercih ettiğiniz dili seçin.</string>
+    <string name="language_system_default">Sistem Varsayılanı</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_kurdish">Kurdî</string>
+
+    <!-- Startup language selection -->
+    <string name="first_launch_language_title">Dilini seç</string>
+    <string name="first_launch_language_subtitle">Kurulumdan önce uygulama dilini seç</string>
+    <string name="first_launch_language_hint">Bunu daha sonra Ayarlar\'dan değiştirebilirsin.</string>
+
+    <!-- Settings extras -->
+    <string name="settings_share_identity">Kimliği Paylaş</string>
+    <string name="settings_developer_title">Geliştirici Ayarları</string>
+    <string name="settings_developer_locked">Kilitli</string>
+    <string name="settings_developer_unlocked">Açık</string>
+    <string name="settings_developer_lock">Kilitle</string>
+    <string name="settings_developer_unlock">Kilidi Aç</string>
+    <string name="settings_password">Şifre</string>
+    <string name="settings_wrong_password">Yanlış şifre</string>
+
+    <!-- Onboarding common -->
+    <string name="onboarding_action_back">Geri</string>
+    <string name="onboarding_action_continue">Devam</string>
+    <string name="onboarding_action_enable">Etkinleştir</string>
+    <string name="onboarding_action_skip">Geç</string>
+
+    <!-- Onboarding welcome -->
+    <string name="onboarding_welcome_title">Boran\'a Hoş Geldin</string>
+    <string name="onboarding_welcome_subtitle">Gerektirmeyen özel mesajlaşma:</string>
+    <string name="onboarding_welcome_feature_no_phone">Telefon numarası yok</string>
+    <string name="onboarding_welcome_feature_no_email">E-posta adresi yok</string>
+    <string name="onboarding_welcome_feature_no_signup">Kayıt veya hesap yok</string>
+    <string name="onboarding_welcome_identity_description">Kimliğin cihazında güvenli biçimde oluşturulur ve saklanır. Kontrol tamamen sende.</string>
+    <string name="onboarding_welcome_get_started">Başla</string>
+    <string name="onboarding_welcome_restore_backup">Yedekten geri yükle</string>
+
+    <!-- Onboarding identity -->
+    <string name="onboarding_identity_title">Kimliğin</string>
+    <string name="onboarding_identity_subtitle">Başkalarının göreceği görünen adı seç:</string>
+    <string name="onboarding_identity_display_name_label">Görünen Ad</string>
+    <string name="onboarding_identity_display_name_placeholder">Anonim Kullanıcı</string>
+    <string name="onboarding_identity_helper">Bunu istediğin zaman değiştirebilir veya farklı bağlamlar için birden çok kimlik oluşturabilirsin.</string>
+
+    <!-- Onboarding connectivity -->
+    <string name="onboarding_connectivity_title">Nasıl bağlanacaksın?</string>
+    <string name="onboarding_connectivity_subtitle">Kullanmak istediğin ağları seç:</string>
+    <string name="onboarding_connectivity_permissions_denied">İzinler reddedildi</string>
+    <string name="onboarding_connectivity_permissions_granted">İzinler verildi</string>
+    <string name="onboarding_connectivity_helper">Bunları daha sonra Ayarlar\'dan yapılandırabilirsin</string>
+    <string name="onboarding_connectivity_interface_auto">Yerel WiFi</string>
+    <string name="onboarding_connectivity_interface_auto_desc">Yerel ağındaki kişileri keşfet</string>
+    <string name="onboarding_connectivity_interface_auto_secondary">İnternet gerekmez</string>
+    <string name="onboarding_connectivity_interface_ble">Bluetooth LE</string>
+    <string name="onboarding_connectivity_interface_ble_desc">Yakındaki cihazlara doğrudan bağlan</string>
+    <string name="onboarding_connectivity_interface_ble_secondary">Bluetooth izinleri gerektirir</string>
+    <string name="onboarding_connectivity_interface_tcp">İnternet (TCP)</string>
+    <string name="onboarding_connectivity_interface_tcp_desc">Global Reticulum ağına bağlan</string>
+    <string name="onboarding_connectivity_interface_tcp_secondary">İnternet bağlantısı gerektirir</string>
+    <string name="onboarding_connectivity_interface_rnode">LoRa Radyo</string>
+    <string name="onboarding_connectivity_interface_rnode_desc">RNode donanımı ile uzun menzilli mesh</string>
+    <string name="onboarding_connectivity_interface_rnode_secondary">Harici donanım gerekir - Ayarlar\'dan yapılandır</string>
+
+    <!-- Onboarding permissions -->
+    <string name="onboarding_permissions_title">Bağlantıda Kal</string>
+    <string name="onboarding_permissions_subtitle">Boran şu durumlarda seni bilgilendirebilir:</string>
+    <string name="onboarding_permissions_feature_messages">Yeni mesajlar geldiğinde</string>
+    <string name="onboarding_permissions_feature_contact_added">Biri seni kişilerine eklediğinde</string>
+    <string name="onboarding_permissions_feature_delivery">Teslim onayları alındığında</string>
+    <string name="onboarding_permissions_notifications_title">Bildirimler</string>
+    <string name="onboarding_permissions_notifications_desc">Yeni mesajlar için uyarı al</string>
+    <string name="onboarding_permissions_battery_title">Sınırsız Pil</string>
+    <string name="onboarding_permissions_battery_desc">Telefon boşta olsa bile mesaj al</string>
+    <string name="onboarding_permissions_battery_secondary">Android\'in Boran\'ı durdurmasını engeller</string>
+
+    <!-- Onboarding complete -->
+    <string name="onboarding_complete_title">Her şey hazır!</string>
+    <string name="onboarding_complete_summary_title">Özet</string>
+    <string name="onboarding_complete_summary_identity">Kimlik</string>
+    <string name="onboarding_complete_summary_networks">Ağlar</string>
+    <string name="onboarding_complete_summary_none_selected">Hiçbiri seçilmedi</string>
+    <string name="onboarding_complete_summary_notifications">Bildirimler</string>
+    <string name="onboarding_complete_summary_battery">Pil</string>
+    <string name="onboarding_complete_enabled">Açık</string>
+    <string name="onboarding_complete_disabled">Kapalı</string>
+    <string name="onboarding_complete_battery_unrestricted">Sınırsız</string>
+    <string name="onboarding_complete_battery_restricted">Kısıtlı</string>
+    <string name="onboarding_complete_show_qr">QR Kodunu Göster</string>
+    <string name="onboarding_complete_qr_hint">Başkalarının seni kişi olarak eklemesi için kimlik QR kodunu paylaş.</string>
+    <string name="onboarding_complete_configure_lora">LoRa Radyoyu Yapılandır</string>
+    <string name="onboarding_complete_start_messaging">Mesajlaşmaya Başla</string>
+    <string name="onboarding_complete_share_identity">Kimliği paylaş</string>
+    <string name="onboarding_complete_share_text">Beni Reticulum\'da ekle:\n\n%1$s\n%2$s</string>
+
+    <!-- Bottom navigation tabs / screen titles -->
+    <string name="nav_chats">Sohbetler</string>
+    <string name="nav_announces">Duyurular</string>
+    <string name="nav_contacts">Kişiler</string>
+    <string name="nav_map">Harita</string>
+    <string name="nav_network_status">Ağ Durumu</string>
+    <string name="nav_settings">Ayarlar</string>
+    <string name="nav_welcome">Hoş geldin</string>
+    <string name="nav_restore_identity">Kimliği Geri Yükle</string>
+
+    <!-- About card -->
+    <string name="about_title">Hakkında</string>
+    <string name="about_logo_description">Columba Logosu</string>
+    <string name="about_tagline">Bluetooth LE, TCP veya RNode (LoRa) üzerinden LXMF ve Reticulum kullanan yerel bir Android mesajlaşma uygulaması</string>
+    <string name="about_section_app_info">Uygulama Bilgisi</string>
+    <string name="about_section_device_info">Cihaz Bilgisi</string>
+    <string name="about_section_protocol_versions">Protokol Sürümleri</string>
+    <string name="about_section_identity">Kimlik</string>
+    <string name="about_section_links">Bağlantılar ve Kaynaklar</string>
+    <string name="about_section_built_with">Kullanılan Teknolojiler</string>
+    <string name="about_section_updates">Güncellemeler</string>
+    <string name="about_field_version">Sürüm</string>
+    <string name="about_field_build_number">Yapı Numarası</string>
+    <string name="about_field_build_type">Yapı Türü</string>
+    <string name="about_field_git_commit">Git Commit</string>
+    <string name="about_field_build_date">Yapı Tarihi</string>
+    <string name="about_field_android_version">Android Sürümü</string>
+    <string name="about_field_api_level">API Seviyesi</string>
+    <string name="about_field_device_model">Cihaz Modeli</string>
+    <string name="about_field_manufacturer">Üretici</string>
+    <string name="about_field_identity_hash">Kimlik Özeti</string>
+    <string name="about_link_github">GitHub Deposu</string>
+    <string name="about_link_report_issue">Sorun Bildir</string>
+    <string name="about_link_about_reticulum">Reticulum Hakkında</string>
+    <string name="about_legal_license">GNU AGPLv3</string>
+    <string name="about_legal_copyright">© 2025–%1$s Columba Katkıda Bulunanlar</string>
+    <string name="about_view_license">Lisansı Görüntüle</string>
+    <string name="about_include_prereleases">Ön sürümleri dahil et</string>
+    <string name="about_check_for_updates">Güncellemeleri Denetle</string>
+    <string name="about_up_to_date">Güncel (v%1$s)</string>
+    <string name="about_update_available">Güncelleme mevcut: %1$s</string>
+    <string name="about_view_release">Sürümü Görüntüle</string>
+    <string name="about_copy_system_info">Sistem Bilgisini Kopyala</string>
+    <string name="about_report_bug">Hata Bildir</string>
+
+    <!-- Pil profilleri -->
+    <string name="battery_profile_max_battery">Maksimum Pil</string>
+    <string name="battery_profile_max_battery_desc">Daha yavaş arka plan ağ ve keşif ile en iyi pil ömrü.</string>
+    <string name="battery_profile_balanced">Dengeli</string>
+    <string name="battery_profile_balanced_desc">Çoğu kullanıcı için normal yanıt verme süresiyle iyi pil ömrü.</string>
+    <string name="battery_profile_performance">Performans</string>
+    <string name="battery_profile_performance_desc">Daha yüksek pil maliyetiyle en hızlı yol kurtarma ve ağ yanıtı.</string>
+
+    <!-- Mesaj İletim ve Alım kartı -->
+    <string name="msgdelivery_title">Mesaj İletim ve Alım</string>
+    <string name="msgdelivery_description">Mesajların aktarıcı üzerinden nasıl gönderilip alınacağını ayarlayın.</string>
+    <string name="msgdelivery_default_method">Varsayılan İletim Yöntemi</string>
+    <string name="msgdelivery_method_direct">Doğrudan (Link tabanlı)</string>
+    <string name="msgdelivery_method_direct_desc">Bağlantı kurar, sınırsız boyut, yeniden denemeli</string>
+    <string name="msgdelivery_method_propagated">Yayılmış (Aktarıcı üzerinden)</string>
+    <string name="msgdelivery_method_propagated_desc">Çevrimdışı alıcılar için mesajı aktarıcıda saklar</string>
+    <string name="msgdelivery_retry_relay_title">Hata durumunda aktarıcıyla yeniden dene</string>
+    <string name="msgdelivery_retry_relay_desc">Doğrudan iletim başarısız olursa aktarıcı üzerinden dener</string>
+    <string name="msgdelivery_my_relay">Aktarıcım</string>
+    <string name="msgdelivery_auto_select">En yakını otomatik seç</string>
+    <string name="msgdelivery_currently">Şu an: %1$s</string>
+    <string name="msgdelivery_use_specific">Belirli bir aktarıcı kullan</string>
+    <string name="msgdelivery_no_relay_selected">Aktarıcı seçilmedi</string>
+    <string name="msgdelivery_tap_to_select">Farklı bir aktarıcı seçmek için dokunun</string>
+    <string name="msgdelivery_no_relay_configured">Aktarıcı yapılandırılmadı. Yayılım düğümü duyuruları bekleniyor…</string>
+    <string name="msgdelivery_select_from_available">Mevcut aktarıcılardan seç</string>
+    <string name="msgdelivery_or_enter_manually">Veya bir aktarıcı hash\'ini elle girin:</string>
+    <string name="msgdelivery_enter_relay_hash">Aktarıcı hedef hash\'ini girin:</string>
+    <string name="msgdelivery_destination_hash">Hedef Hash</string>
+    <string name="msgdelivery_hash_placeholder">32 karakter hex</string>
+    <string name="msgdelivery_nickname_optional">Takma ad (isteğe bağlı)</string>
+    <string name="msgdelivery_nickname_placeholder">örn. Ev Aktarıcım</string>
+    <string name="msgdelivery_set_as_relay">Aktarıcı olarak ayarla</string>
+    <string name="msgdelivery_section_retrieval">MESAJ ALIMI</string>
+    <string name="msgdelivery_auto_retrieve">Aktarıcıdan otomatik al</string>
+    <string name="msgdelivery_auto_retrieve_desc">Mesajları düzenli olarak kontrol et</string>
+    <string name="msgdelivery_sync_now">Şimdi Eşitle</string>
+    <string name="msgdelivery_syncing">Eşitleniyor…</string>
+    <string name="msgdelivery_section_size">GELEN MESAJ BOYUTU</string>
+    <string name="msgdelivery_size_description">Kabul edilecek maksimum mesaj boyutu. Daha büyükleri reddedilir.</string>
+    <string name="msgdelivery_size_unlimited">Sınırsız</string>
+    <string name="msgdelivery_custom">Özel</string>
+    <string name="msgdelivery_section_sort">MESAJ SIRALAMASI</string>
+    <string name="msgdelivery_sort_title">Gönderenin saatine göre sırala</string>
+    <string name="msgdelivery_sort_on_desc">Mesajlar gönderenin saatine göre sıralanır (yanlış olabilir)</string>
+    <string name="msgdelivery_sort_off_desc">Mesajlar size ulaştıkları sıraya göre sıralanır</string>
+    <string name="msgdelivery_select_relay_dialog_title">Aktarıcı Seç</string>
+    <string name="msgdelivery_no_propagation_nodes">Henüz yayılım düğümü bulunamadı. Duyuruları bekleyin veya bir hash girin.</string>
+    <string name="msgdelivery_view_all_relays">Tüm Aktarıcıları Gör…</string>
+    <string name="msgdelivery_current">Geçerli</string>
+    <string name="msgdelivery_custom_interval_title">Özel Alım Aralığı</string>
+    <string name="msgdelivery_custom_interval_text">Alım aralığını girin (1–12 saat):</string>
+    <string name="msgdelivery_seconds">Saniye</string>
+    <string name="msgdelivery_custom_size_title">Özel Boyut Sınırı</string>
+    <string name="msgdelivery_custom_size_text">Maksimum mesaj boyutunu girin (1–128 MB):</string>
+    <string name="msgdelivery_mb">MB</string>
+    <string name="msgdelivery_auto_label">(otomatik)</string>
+    <string name="action_cancel_generic">İptal</string>
+    <string name="action_confirm_generic">Onayla</string>
+    <string name="action_delete">Sil</string>
+    <string name="action_block">Engelle</string>
+    <string name="action_not_now">Şimdi Değil</string>
+
+    <!-- Sohbetler ekranı -->
+    <string name="chats_title">Sohbetler</string>
+    <string name="chats_subtitle_one">%1$d sohbet</string>
+    <string name="chats_subtitle_other">%1$d sohbet</string>
+    <string name="chats_qr_code">QR Kodu</string>
+    <string name="chats_sync_messages">Mesajları eşitle</string>
+    <string name="chats_sync_complete">Eşitleme tamamlandı</string>
+    <string name="chats_sync_complete_with_count">Eşitleme tamam: %1$d yeni mesaj</string>
+    <string name="chats_sync_failed">Eşitleme başarısız: %1$s</string>
+    <string name="chats_sync_no_relay">Aktarıcı yapılandırılmadı</string>
+    <string name="chats_sync_timed_out">Eşitleme zaman aşımına uğradı</string>
+    <string name="chats_saved_contact">Kişi kaydedildi</string>
+    <string name="chats_removed_contact">Kişi kaldırıldı</string>
+    <string name="chats_save_to_contacts">Kişilere Kaydet</string>
+    <string name="chats_remove_from_contacts">Kişilerden Çıkar</string>
+    <string name="chats_marked_as_unread">Okunmadı olarak işaretlendi</string>
+    <string name="chats_deleted_conversation">%1$s ile sohbet silindi</string>
+    <string name="chats_blocked_user">%1$s engellendi</string>
+    <string name="chats_share_identity">Kimliği Paylaş</string>
+    <string name="chats_no_conversations_yet">Henüz sohbet yok</string>
+    <string name="chats_messages_will_appear">Eşlerden gelen mesajlar burada görünecek</string>
+    <string name="chats_loading">Sohbetler yükleniyor…</string>
+    <string name="chats_search_placeholder">Sohbetlerde ara…</string>
+    <string name="chats_mark_as_unread">Okunmadı olarak işaretle</string>
+    <string name="chats_view_peer_details">Eş Bilgisini Görüntüle</string>
+    <string name="chats_delete_conversation">Sohbeti Sil</string>
+    <string name="chats_block_user">Kullanıcıyı Engelle</string>
+    <string name="chats_delete_conversation_title">Sohbet silinsin mi?</string>
+    <string name="chats_delete_conversation_text">%1$s ile olan sohbetinizi silmek istediğinizden emin misiniz? Tüm mesajlar kalıcı olarak silinecek.</string>
+    <string name="chats_block_title">%1$s engellensin mi?</string>
+    <string name="chats_block_text">Size mesaj gönderemeyecekler. Sohbetleri sohbet listesinden gizlenir.</string>
+    <string name="chats_also_delete">Sohbeti ve mesajları da sil</string>
+    <string name="chats_also_blackhole">Ayrıca duyurularını aktarma (blackhole)</string>
+    <string name="chats_blackhole_transport_disabled">Aktarım şu anda devre dışı. Aktarım sonradan etkinleştirildiğinde bu kimlik blackhole edilecek.</string>
+
+    <!-- Bluetooth izin alt sayfası -->
+    <string name="ble_perm_title">Bluetooth İzinleri Gerekli</string>
+    <string name="ble_perm_grant">İzin Ver</string>
+    <string name="ble_perm_rationale">Columba, çevrenizdeki cihazlarla mesh ağında haberleşmek için Bluetooth Low Energy (BLE) kullanır.\n\nBu işlevi etkinleştirmek için şu izinler gereklidir:\n\n• Bluetooth Tarama: Yakındaki Reticulum eşlerini bulmak için\n• Bluetooth Bağlanma: Eşlerle bağlantı kurmak için\n• Bluetooth Yayınlama: Diğer cihazlara varlığınızı bildirmek için\n\nBu izinler Columba\'nın merkeziyetsiz, internet dışı bir iletişim ağı kurmasına olanak tanır.</string>
+</resources>
+

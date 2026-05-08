@@ -199,7 +199,7 @@ android {
 
     buildTypes {
         release {
-            resValue("string", "app_name", "Columba")
+            resValue("string", "app_name", "Boran")
             isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
@@ -214,7 +214,7 @@ android {
         debug {
             applicationIdSuffix = ".debug"
             versionNameSuffix = "-debug"
-            resValue("string", "app_name", "columbatest")
+            resValue("string", "app_name", "Boran Test")
             if (releaseSigningConfigured) {
                 signingConfig = signingConfigs.getByName("release")
             }

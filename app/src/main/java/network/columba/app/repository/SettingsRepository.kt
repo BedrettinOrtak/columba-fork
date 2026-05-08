@@ -159,6 +159,38 @@ class SettingsRepository
             val SORT_MESSAGES_BY_SENT_TIME = booleanPreferencesKey("sort_messages_by_sent_time")
         }
 
+        // Language preference — stored in SharedPreferences so it can be read synchronously
+        // in Activity.attachBaseContext() before Hilt/DataStore are ready.
+        private val languagePrefs: SharedPreferences by lazy {
+            context.getSharedPreferences(
+                network.columba.app.util.LocaleHelper.PREFS_NAME,
+                Context.MODE_PRIVATE,
+            )
+        }
+
+        /** Read the persisted language tag synchronously (e.g. "tr", "fa", "ku", "en", "" = system). */
+        fun getLanguageSync(): String =
+            languagePrefs.getString(network.columba.app.util.LocaleHelper.PREF_LANGUAGE, "") ?: ""
+
+        /** Persist the language tag. Call LocaleHelper.onAttach + activity.recreate() to apply it. */
+        fun saveLanguage(language: String) {
+            languagePrefs.edit()
+                .putString(network.columba.app.util.LocaleHelper.PREF_LANGUAGE, language)
+                .apply()
+        }
+
+        /** Reactive stream of the persisted language tag. */
+        val languageFlow: Flow<String> =
+            callbackFlow {
+                val listener =
+                    SharedPreferences.OnSharedPreferenceChangeListener { _, _ ->
+                        trySend(getLanguageSync())
+                    }
+                languagePrefs.registerOnSharedPreferenceChangeListener(listener)
+                trySend(getLanguageSync())
+                awaitClose { languagePrefs.unregisterOnSharedPreferenceChangeListener(listener) }
+            }.distinctUntilChanged()
+
         // Cross-process SharedPreferences for service communication
         // DataStore does NOT support multi-process access, so we use SharedPreferences
         // with MODE_MULTI_PROCESS for values written by the service process.

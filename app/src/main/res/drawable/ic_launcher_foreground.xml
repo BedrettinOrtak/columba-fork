@@ -1,107 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="108dp"
-    android:height="108dp"
-    android:viewportWidth="512"
-    android:viewportHeight="512">
+<!--
+  Adaptive icon foreground for the Columba launcher icon.
 
-    <!-- Scale 0.65 and translate to center in safe zone -->
-    <group
-        android:scaleX="0.65"
-        android:scaleY="0.65"
-        android:pivotX="256"
-        android:pivotY="256"
-        android:translateX="6"
-        android:translateY="-10">
+  TUNING NOTES (manual): the visible canvas is 108dp x 108dp but every
+  launcher applies a mask that crops everything outside the inner ~72dp
+  safe zone. We render the dove inside a centred sub-box and tell the
+  bitmap to fill that box so it actually scales (gravity=center alone
+  draws the 1080x1080 PNG at its native size and you only see a tiny
+  cropped slice of the centre).
 
-        <!-- Connecting lines -->
-        <path
-            android:pathData="M93.53,128.431 C94.162,128.471 271.37,194.336 271.29,193.077"
-            android:strokeWidth="6"
-            android:strokeColor="#FFFFFF"
-            android:strokeAlpha="0.7"
-            android:strokeLineCap="round"
-            android:fillColor="#00000000" />
+  - android:width / android:height on the <item> = the visible diameter
+    of the dove inside the icon. 80dp is the sweet spot: large enough
+    to read clearly on round Pixel-style masks, small enough that
+    nothing gets clipped on aggressive squircle masks.
+  - android:gravity="fill_horizontal|fill_vertical" on the <bitmap>
+    forces the PNG to scale to that 80x80 box (preserves aspect because
+    the source PNG is square).
 
-        <path
-            android:pathData="M270.75,193.487 C270.902,226.855 231.12,378.151 216.617,402.841"
-            android:strokeWidth="6"
-            android:strokeColor="#FFFFFF"
-            android:strokeAlpha="0.7"
-            android:strokeLineCap="round"
-            android:fillColor="#00000000" />
-
-        <path
-            android:pathData="M270.923,193.326 C281.938,183.739 347.714,144.654 356.069,139.108"
-            android:strokeWidth="6"
-            android:strokeColor="#FFFFFF"
-            android:strokeAlpha="0.7"
-            android:strokeLineCap="round"
-            android:fillColor="#00000000" />
-
-        <path
-            android:pathData="M405.781,182.043 C381.14,160.276 371.817,147.932 356.85,138.219"
-            android:strokeWidth="6"
-            android:strokeColor="#FFFFFF"
-            android:strokeAlpha="0.7"
-            android:strokeLineCap="round"
-            android:fillColor="#00000000" />
-
-        <!-- Node glows -->
-        <path
-            android:pathData="M406.658,182.257 m-20.163,0 a20.163,20.163 0,1 1,40.326 0 a20.163,20.163 0,1 1,-40.326 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <path
-            android:pathData="M356.658,138.257 m-28.322,0 a28.322,28.322 0,1 1,56.644 0 a28.322,28.322 0,1 1,-56.644 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <path
-            android:pathData="M270.658,193.257 m-16,0 a16,16 0,1 1,32 0 a16,16 0,1 1,-32 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <path
-            android:pathData="M214.658,403.257 m-16,0 a16,16 0,1 1,32 0 a16,16 0,1 1,-32 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <path
-            android:pathData="M93.506,128.312 m-13,0 a13,13 0,1 1,26 0 a13,13 0,1 1,-26 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <path
-            android:pathData="M230.655,178.527 m-11.95,0 a11.95,12.87 0,1 1,23.9 0 a11.95,12.87 0,1 1,-23.9 0"
-            android:fillColor="#FFFFFF"
-            android:fillAlpha="0.35" />
-
-        <!-- Solid node centers -->
-        <path
-            android:pathData="M406.658,182.257 m-9,0 a9,9 0,1 1,18 0 a9,9 0,1 1,-18 0"
-            android:fillColor="#FFFFFF" />
-
-        <path
-            android:pathData="M356.658,138.257 m-10.837,0 a10.837,10.837 0,1 1,21.674 0 a10.837,10.837 0,1 1,-21.674 0"
-            android:fillColor="#FFFFFF" />
-
-        <path
-            android:pathData="M270.658,193.257 m-6.5,0 a6.5,6.5 0,1 1,13 0 a6.5,6.5 0,1 1,-13 0"
-            android:fillColor="#FFFFFF" />
-
-        <path
-            android:pathData="M214.658,403.257 m-6.5,0 a6.5,6.5 0,1 1,13 0 a6.5,6.5 0,1 1,-13 0"
-            android:fillColor="#FFFFFF" />
-
-        <path
-            android:pathData="M93.506,128.312 m-5,0 a5,5 0,1 1,10 0 a5,5 0,1 1,-10 0"
-            android:fillColor="#FFFFFF" />
-
-        <path
-            android:pathData="M230.655,178.527 m-5.34,0 a5.34,5.74 0,1 1,10.68 0 a5.34,5.74 0,1 1,-10.68 0"
-            android:fillColor="#FFFFFF" />
-
-    </group>
-</vector>
+  If the dove still looks too small, bump width/height to 88dp or 92dp.
+  If it gets clipped on Samsung/MIUI launchers, drop to 72dp.
+-->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:gravity="center"
+        android:width="80dp"
+        android:height="80dp">
+        <bitmap
+            android:src="@drawable/ic_launcher_fg"
+            android:gravity="fill_horizontal|fill_vertical"
+            android:antialias="true"
+            android:filter="true" />
+    </item>
+</layer-list>

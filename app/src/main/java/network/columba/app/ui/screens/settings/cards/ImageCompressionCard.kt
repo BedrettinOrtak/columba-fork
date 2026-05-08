@@ -20,7 +20,9 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import network.columba.app.R
 import network.columba.app.data.model.ImageCompressionPreset
 import network.columba.app.ui.components.CollapsibleSettingsCard
 
@@ -47,16 +49,14 @@ fun ImageCompressionCard(
 ) {
     android.util.Log.d("ImageCompressionCard", "Rendering: selected=$selectedPreset, detected=$detectedPreset, hasSlowInterface=$hasSlowInterface")
     CollapsibleSettingsCard(
-        title = "Image Compression",
+        title = stringResource(R.string.image_compression_title),
         icon = Icons.Default.Image,
         isExpanded = isExpanded,
         onExpandedChange = onExpandedChange,
     ) {
         // Description
         Text(
-            text =
-                "Select compression level for image attachments. " +
-                    "Auto mode detects your network type and selects the optimal preset.",
+            text = stringResource(R.string.image_compression_description),
             style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
         )
@@ -164,6 +164,7 @@ private fun PresetDescription(
  */
 @Composable
 private fun SlowInterfaceWarning() {
+    val warningText = stringResource(R.string.image_compression_slow_warning)
     Surface(
         modifier = Modifier.fillMaxWidth(),
         color = MaterialTheme.colorScheme.errorContainer,
@@ -183,9 +184,7 @@ private fun SlowInterfaceWarning() {
                 tint = MaterialTheme.colorScheme.onErrorContainer,
             )
             Text(
-                text =
-                    "Slow interfaces (LoRa/BLE) are enabled. " +
-                        "Sending large images may take a very long time or fail.",
+                text = warningText,
                 style = MaterialTheme.typography.bodySmall,
                 color = MaterialTheme.colorScheme.onErrorContainer,
             )

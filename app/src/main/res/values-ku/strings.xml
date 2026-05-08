@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="action_confirm">Erê</string>
+    <string name="action_cancel">Betal</string>
+    <string name="action_collapse">Bixemilîne</string>
+    <string name="action_expand">Berfireh bike</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Mîheng</string>
+    <string name="settings_system_info_copied">Agahdariya pergalê hat kopî kirin</string>
+    <string name="settings_bug_report_copied">Raporta xeletiyê hat kopî kirin</string>
+    <string name="settings_shared_instance_available">Nimûneya hevpar heye</string>
+    <string name="settings_shared_instance_switch">Biguhêze</string>
+    <string name="settings_location_permission_info">Ji bo guhartin here Destûr → Cihwarî</string>
+
+    <!-- Network card -->
+    <string name="network_title">Tor</string>
+    <string name="network_status_description">Rewşa tora Reticulum, navenderên çalak, girêdanên BLE û teşhîsên girêdanê şopandin.</string>
+    <string name="network_interfaces_disabled_description">Birêvebirina navenderê gava nimûneya pergala hevpar tê bikaranîn neçalak e.</string>
+    <string name="network_interfaces_description">Rêya girêdana cîhazê bi tora Reticulum mîheng bikin. TCP, vedîtina otomatîk, LoRa (bi RNode) an navenderên BLE zêde bikin.</string>
+    <string name="network_view_status">Rewşa Torê Bibîne</string>
+    <string name="network_manage_interfaces">Navenderan Birêvebibe</string>
+
+    <!-- Identity card -->
+    <string name="identity_title">Nasnameyo</string>
+    <string name="identity_view_description">Nasnameyê xwe bibînin û parve bikin, navê nîşandanê biguhêrînin û koda QR ji bo parvekirina têkiliyê birêvebibe.</string>
+    <string name="identity_manage_description">Ji bo ciyawazên cûda nasnameyên gelek çêkin û birêvebibe (kar, kesane, bênam).</string>
+    <string name="identity_view_my_identity">Nasnameyê Min Bibîne</string>
+    <string name="identity_manage_identities">Nasnameyan Birêvebibe</string>
+
+    <!-- Privacy card -->
+    <string name="privacy_title">Nepenî</string>
+    <string name="privacy_block_on_description">Tenê têkilî dikarin ji we re peyamê bişînin. Peyamên ji şînasnasên nenas bêdeng têne jêbirin.</string>
+    <string name="privacy_block_off_description">Her kes dikare ji we re peyamê bişîne, di nav de şînasnasên nenas.</string>
+    <string name="privacy_blocked_users">Bikarhênerên Astengkirî</string>
+
+    <!-- Notifications card -->
+    <string name="notifications_title">Agahdarî</string>
+    <string name="notifications_enabled_description">Mîhengên agahdariyê ji bo peyam, ragihandin û bûyerên Bluetooth birêvebibe.</string>
+    <string name="notifications_disabled_description">Hemî agahdarî neçalak in. Ji bo wergirtina hişyariyên peyam û bûyeran çalak bike.</string>
+    <string name="notifications_manage">Agahdariyê Birêvebibe</string>
+
+    <!-- Auto announce card -->
+    <string name="auto_announce_title">Ragihandina Otomatîk</string>
+    <string name="auto_announce_description">Bi navberên birêkûpêk hebûna xwe ya li ser torê bixweber ragihînin. Ev ji hevalên din re dibe alîkar ku we bibînin.</string>
+    <string name="auto_announce_interval_single">Navbera Ragihandinê: 1 saet</string>
+    <string name="auto_announce_interval_plural">Navbera Ragihandinê: %1$d saet</string>
+    <string name="auto_announce_custom">Xasirî</string>
+    <string name="auto_announce_custom_with_value">Xasirî (%1$ds)</string>
+    <string name="auto_announce_last_hours_ago">Ragihandina dawî: %1$ds %2$dd berê</string>
+    <string name="auto_announce_last_minutes_ago">Ragihandina dawî: %1$dd berê</string>
+    <string name="auto_announce_last_just_now">Ragihandina dawî: naha</string>
+    <string name="auto_announce_none_sent">Hîn tu ragihandin nehatiye şandin</string>
+    <string name="auto_announce_next_soon">Ragihandina din: zû</string>
+    <string name="auto_announce_next_hours">Ragihandina din di: %1$ds %2$dd</string>
+    <string name="auto_announce_next_minutes">Ragihandina din di: %1$dd</string>
+    <string name="auto_announce_announcing">Tên ragihandan…</string>
+    <string name="auto_announce_now">Niha Ragihîne</string>
+    <string name="auto_announce_success">Ragihandin hate şandin!</string>
+    <string name="auto_announce_error">Xeletî: %1$s</string>
+    <string name="auto_announce_custom_dialog_title">Navbera Xasirî</string>
+    <string name="auto_announce_custom_dialog_text">Navbera ragihandinê binivîsin (1–12 saet):</string>
+    <string name="auto_announce_hours_label">Saet</string>
+    <string name="auto_announce_value_range_error">Nirx divê di navbera 1 û 12 de be</string>
+
+    <!-- Image compression card -->
+    <string name="image_compression_title">Pêvekirina Wêneyê</string>
+    <string name="image_compression_description">Asta pêvekirinê ji bo pêvekên wêneyê hilbijêrin. Moda otomatîk cûreya torê tespît û çêtirîn mîhengê hilbijêre.</string>
+    <string name="image_compression_slow_warning">Navenderên hêdî (LoRa/BLE) çalak in. Şandina wêneyên mezin dibe ku pir dem bigire an têk bibe.</string>
+
+    <!-- Battery & Background card -->
+    <string name="battery_title">Batarî û Paşî</string>
+    <string name="battery_description">Hilbijêrin ka Boran çiqas bi hêz Reticulum xwecihî li paşî bixebite. Guhartin rasterast tên sepandin.</string>
+    <string name="battery_exempted_description">Muafiyeta çêtirkirina batariyê hate dayîn. Boran dikare di rewşa xewê ya kûr de li paşî pêbawertir bixebite.</string>
+    <string name="battery_not_exempted_description">Çêtirkirina batariya Android hîn çalak e. Profîla batariyê ya jorê xebata paşî kêm dike, lê Android dibe ku şebeka paşî dereng bixe an biqede heya ku Boran neyê muaf kirin.</string>
+    <string name="battery_view_settings">Mîhengên Batariyê Bibîne</string>
+    <string name="battery_request_exemption">Muafiyetê Bixwaze</string>
+    <string name="battery_open_settings_manually">Mîhengên Batariyê Bi Destan Veke</string>
+
+    <!-- Advanced card -->
+    <string name="advanced_title">Pêşkeftî</string>
+    <string name="advanced_transport_node">Girêya Veguhêz</string>
+    <string name="advanced_transport_node_description">Trafîkê ji bo tora mesh derbaz bike. Gava neçalak be, ev cîhaz tenê trafîka xwe birêvebire û peyaman ji hevalên din re naguhêze. Bi gelemperî ne tê pêşniyar kirin ku cîhazên mobîl girêyên veguhêz bin. Kêmtir mimkûn e ku pozîsyonek sabît li torê biparêzin, û ji ber vê yekê dikarin rêvebiriya pirachopî ya neyînî bibînin. Çalakkirina vê yekê karanîna daneyan û vexwarina batariyê zêde dike. Lê di toreke BLE-ya tenê de, ji bo peyamên pirachopî hewce ye.</string>
+
+    <!-- Language card -->
+    <string name="language_title">Ziman</string>
+    <string name="language_description">Zimana xwe ya bijartî ji bo navenda bernamesê hilbijêrin.</string>
+    <string name="language_system_default">Mîhenga Pergalê</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_kurdish">Kurdî</string>
+
+    <!-- Startup language selection -->
+    <string name="first_launch_language_title">Zimanê xwe hilbijêre</string>
+    <string name="first_launch_language_subtitle">Berî sazkirinê zimanê sepanê hilbijêre</string>
+    <string name="first_launch_language_hint">Tu dikarî paşê di Mîhengan de biguherînî.</string>
+
+    <!-- Settings extras -->
+    <string name="settings_share_identity">Nasnameyê Parve Bike</string>
+    <string name="settings_developer_title">Mîhengên Pêşdebirê</string>
+    <string name="settings_developer_locked">Quflkirî</string>
+    <string name="settings_developer_unlocked">Vekirî</string>
+    <string name="settings_developer_lock">Qufl bike</string>
+    <string name="settings_developer_unlock">Veke</string>
+    <string name="settings_password">Şîfre</string>
+    <string name="settings_wrong_password">Şîfre xelet e</string>
+
+    <!-- Onboarding common -->
+    <string name="onboarding_action_back">Paşve</string>
+    <string name="onboarding_action_continue">Berdewam bike</string>
+    <string name="onboarding_action_enable">Çalak bike</string>
+    <string name="onboarding_action_skip">Derbas bike</string>
+
+    <!-- Onboarding welcome -->
+    <string name="onboarding_welcome_title">Bi xêr hatî Boran</string>
+    <string name="onboarding_welcome_subtitle">Nameşêniya taybet ku nehewce dike:</string>
+    <string name="onboarding_welcome_feature_no_phone">Hejmara têlefonê tune</string>
+    <string name="onboarding_welcome_feature_no_email">Navnîşana e-nameyê tune</string>
+    <string name="onboarding_welcome_feature_no_signup">Tomarkirin an hesab tune</string>
+    <string name="onboarding_welcome_identity_description">Nasnameya te bi ewlehî li ser cîhaza te tê çêkirin û tê parastin. Kontrola wê bi tevahî di destê te de ye.</string>
+    <string name="onboarding_welcome_get_started">Dest pê bike</string>
+    <string name="onboarding_welcome_restore_backup">Ji paşvegerê vegerîne</string>
+
+    <!-- Onboarding identity -->
+    <string name="onboarding_identity_title">Nasnameya Te</string>
+    <string name="onboarding_identity_subtitle">Navekî nîşandanê hilbijêre ku yên din bibînin:</string>
+    <string name="onboarding_identity_display_name_label">Navê Nîşandanê</string>
+    <string name="onboarding_identity_display_name_placeholder">Hevalê Nenaskirî</string>
+    <string name="onboarding_identity_helper">Tu dikarî vê her dem biguherînî, an jî ji bo rewşên cuda gelek nasname çêkî.</string>
+
+    <!-- Onboarding connectivity -->
+    <string name="onboarding_connectivity_title">Tu çawa dê girêbidî?</string>
+    <string name="onboarding_connectivity_subtitle">Torên ku dixwazî bikar bînî hilbijêre:</string>
+    <string name="onboarding_connectivity_permissions_denied">Destûr hatin redkirin</string>
+    <string name="onboarding_connectivity_permissions_granted">Destûr hatin dayîn</string>
+    <string name="onboarding_connectivity_helper">Tu dikarî van paşê di Mîhengan de mîheng bikî</string>
+    <string name="onboarding_connectivity_interface_auto">WiFi ya Herêmî</string>
+    <string name="onboarding_connectivity_interface_auto_desc">Hevalan li tora herêmî bibîne</string>
+    <string name="onboarding_connectivity_interface_auto_secondary">Ne hewceya internetê ye</string>
+    <string name="onboarding_connectivity_interface_ble">Bluetooth LE</string>
+    <string name="onboarding_connectivity_interface_ble_desc">Rasterast bi cîhazên nêzîk ve girêbide</string>
+    <string name="onboarding_connectivity_interface_ble_secondary">Destûrên Bluetooth hewce ne</string>
+    <string name="onboarding_connectivity_interface_tcp">Internet (TCP)</string>
+    <string name="onboarding_connectivity_interface_tcp_desc">Bi tora giştî ya Reticulum ve girêbide</string>
+    <string name="onboarding_connectivity_interface_tcp_secondary">Girêdana internetê hewce ye</string>
+    <string name="onboarding_connectivity_interface_rnode">Radyoya LoRa</string>
+    <string name="onboarding_connectivity_interface_rnode_desc">Mesh-a dûrdirêj bi alîkariya amûra RNode</string>
+    <string name="onboarding_connectivity_interface_rnode_secondary">Amûra derve hewce ye - di Mîhengan de mîheng bike</string>
+
+    <!-- Onboarding permissions -->
+    <string name="onboarding_permissions_title">Girêdayî bimîne</string>
+    <string name="onboarding_permissions_subtitle">Boran dikare di van rewşan de te agahdar bike:</string>
+    <string name="onboarding_permissions_feature_messages">Dema peyamên nû tên</string>
+    <string name="onboarding_permissions_feature_contact_added">Dema kesek te zêde dike</string>
+    <string name="onboarding_permissions_feature_delivery">Dema piştrastkirinên gihandinê tên</string>
+    <string name="onboarding_permissions_notifications_title">Agahdarî</string>
+    <string name="onboarding_permissions_notifications_desc">Ji bo peyamên nû hişyariyan bistîne</string>
+    <string name="onboarding_permissions_battery_title">Batarî Bê Sînorkirin</string>
+    <string name="onboarding_permissions_battery_desc">Heta dema ku telefon bêkar e jî peyaman bistîne</string>
+    <string name="onboarding_permissions_battery_secondary">Destûrê nade Android Boran rawestîne</string>
+
+    <!-- Onboarding complete -->
+    <string name="onboarding_complete_title">Hemû tişt amade ne!</string>
+    <string name="onboarding_complete_summary_title">Kurte</string>
+    <string name="onboarding_complete_summary_identity">Nasname</string>
+    <string name="onboarding_complete_summary_networks">Tor</string>
+    <string name="onboarding_complete_summary_none_selected">Tu tişt nehat hilbijartin</string>
+    <string name="onboarding_complete_summary_notifications">Agahdarî</string>
+    <string name="onboarding_complete_summary_battery">Batarî</string>
+    <string name="onboarding_complete_enabled">Çalak</string>
+    <string name="onboarding_complete_disabled">Neçalak</string>
+    <string name="onboarding_complete_battery_unrestricted">Bê Sînorkirin</string>
+    <string name="onboarding_complete_battery_restricted">Sînorkirî</string>
+    <string name="onboarding_complete_show_qr">QR Koda Nîşan Bide</string>
+    <string name="onboarding_complete_qr_hint">QR koda nasnameya xwe parve bike da ku yên din te wekî têkilî zêde bikin.</string>
+    <string name="onboarding_complete_configure_lora">Radyoya LoRa Mîheng Bike</string>
+    <string name="onboarding_complete_start_messaging">Dest bi Nameşêniyê bike</string>
+    <string name="onboarding_complete_share_identity">Nasnameyê parve bike</string>
+    <string name="onboarding_complete_share_text">Min li Reticulum zêde bike:\n\n%1$s\n%2$s</string>
+
+    <!-- Bottom navigation tabs / screen titles -->
+    <string name="nav_chats">Sohbet</string>
+    <string name="nav_announces">Ragihandin</string>
+    <string name="nav_contacts">Têkilî</string>
+    <string name="nav_map">Nexşe</string>
+    <string name="nav_network_status">Rewşa Torê</string>
+    <string name="nav_settings">Mîheng</string>
+    <string name="nav_welcome">Bi xêr hatî</string>
+    <string name="nav_restore_identity">Nasnameyê Vegerîne</string>
+
+    <!-- About card -->
+    <string name="about_title">Derbarê</string>
+    <string name="about_logo_description">Logoya Columba</string>
+    <string name="about_tagline">Bernameya peyaman a Androidê ya xwemalî bi Bluetooth LE, TCP an jî RNode (LoRa) bi rêya LXMF û Reticulum</string>
+    <string name="about_section_app_info">Agahiyên Bernameyê</string>
+    <string name="about_section_device_info">Agahiyên Cîhazê</string>
+    <string name="about_section_protocol_versions">Guhertoyên Protokolê</string>
+    <string name="about_section_identity">Nasname</string>
+    <string name="about_section_links">Girêdan û Çavkanî</string>
+    <string name="about_section_built_with">Bi van hatiye çêkirin</string>
+    <string name="about_section_updates">Nûkirin</string>
+    <string name="about_field_version">Guherto</string>
+    <string name="about_field_build_number">Hejmara Avahiyê</string>
+    <string name="about_field_build_type">Cureyê Avahiyê</string>
+    <string name="about_field_git_commit">Git Commit</string>
+    <string name="about_field_build_date">Dîroka Avahiyê</string>
+    <string name="about_field_android_version">Guhertoya Androidê</string>
+    <string name="about_field_api_level">Asta API</string>
+    <string name="about_field_device_model">Modela Cîhazê</string>
+    <string name="about_field_manufacturer">Hilberîner</string>
+    <string name="about_field_identity_hash">Heşê Nasnameyê</string>
+    <string name="about_link_github">Embara GitHub</string>
+    <string name="about_link_report_issue">Pirsgirêkê Ragihîne</string>
+    <string name="about_link_about_reticulum">Derbarê Reticulum</string>
+    <string name="about_legal_license">GNU AGPLv3</string>
+    <string name="about_legal_copyright">© 2025–%1$s Beşdarên Columba</string>
+    <string name="about_view_license">Lîsansê Bibîne</string>
+    <string name="about_include_prereleases">Pêş-guhertoyan jî tev bigire</string>
+    <string name="about_check_for_updates">Nûkirinan Kontrol Bike</string>
+    <string name="about_up_to_date">Aktuel (v%1$s)</string>
+    <string name="about_update_available">Nûkirin heye: %1$s</string>
+    <string name="about_view_release">Weşanê Bibîne</string>
+    <string name="about_copy_system_info">Agahiyên Sîstemê Kopî Bike</string>
+    <string name="about_report_bug">Şewtiyê Ragihîne</string>
+
+    <!-- Profîlên bataryayê -->
+    <string name="battery_profile_max_battery">Bataryaya Herî Bilind</string>
+    <string name="battery_profile_max_battery_desc">Jiyana herî baş a bataryayê bi torê û keşfa hêdîtir.</string>
+    <string name="battery_profile_balanced">Hevseng</string>
+    <string name="battery_profile_balanced_desc">Jiyaneke baş a bataryayê û bersivdayîna asayî ji bo piraniya bikarhêneran.</string>
+    <string name="battery_profile_performance">Performans</string>
+    <string name="battery_profile_performance_desc">Vegerandina rê û bersivdayîna torê ya herî zû bi bahayê bataryaya bilindtir.</string>
+
+    <!-- Karta şandin û wergirtina peyaman -->
+    <string name="msgdelivery_title">Şandin û Wergirtina Peyaman</string>
+    <string name="msgdelivery_description">Çawaniya şandin û wergirtina peyaman bi rêya releyê mîheng bike.</string>
+    <string name="msgdelivery_default_method">Rêbaza Şandinê ya Standard</string>
+    <string name="msgdelivery_method_direct">Rasterast (li ser girêdanê)</string>
+    <string name="msgdelivery_method_direct_desc">Girêdanekê çêdike, mezinahî bêsînor, bi ceribandinên dîsa</string>
+    <string name="msgdelivery_method_propagated">Belavkirî (bi rêya releyê)</string>
+    <string name="msgdelivery_method_propagated_desc">Peyamê li releyê ji bo wergirên offline hilîne</string>
+    <string name="msgdelivery_retry_relay_title">Di şikestinê de bi releyê dîsa biceribîne</string>
+    <string name="msgdelivery_retry_relay_desc">Eger şandina rasterast biser nekeve, bi releyê biceribîne</string>
+    <string name="msgdelivery_my_relay">Releya Min</string>
+    <string name="msgdelivery_auto_select">Ya herî nêzîk bi xweber hilbijêre</string>
+    <string name="msgdelivery_currently">Niha: %1$s</string>
+    <string name="msgdelivery_use_specific">Releyeke diyarkirî bikar bîne</string>
+    <string name="msgdelivery_no_relay_selected">Tu releyek nehatiye hilbijartin</string>
+    <string name="msgdelivery_tap_to_select">Ji bo hilbijartina releyeke din bitikîne</string>
+    <string name="msgdelivery_no_relay_configured">Releyek nehatiye mîhengkirin. Li benda ragihandinên girêya belavkirinê…</string>
+    <string name="msgdelivery_select_from_available">Ji releyên berdest hilbijêre</string>
+    <string name="msgdelivery_or_enter_manually">An hash a releyê bi destan binivîse:</string>
+    <string name="msgdelivery_enter_relay_hash">Hash a armanca releyê binivîse:</string>
+    <string name="msgdelivery_destination_hash">Hash a Armancê</string>
+    <string name="msgdelivery_hash_placeholder">32 tîp hex</string>
+    <string name="msgdelivery_nickname_optional">Bernav (vebijarkî)</string>
+    <string name="msgdelivery_nickname_placeholder">mînak: Releya Mala Min</string>
+    <string name="msgdelivery_set_as_relay">Wek Rele Saz Bike</string>
+    <string name="msgdelivery_section_retrieval">WERGIRTINA PEYAMAN</string>
+    <string name="msgdelivery_auto_retrieve">Bi xweber ji releyê wergire</string>
+    <string name="msgdelivery_auto_retrieve_desc">Peyaman bi awayê demkî kontrol bike</string>
+    <string name="msgdelivery_sync_now">Niha Hevdem Bike</string>
+    <string name="msgdelivery_syncing">Hevdem dibe…</string>
+    <string name="msgdelivery_section_size">MEZINAHIYA PEYAMA HATÎ</string>
+    <string name="msgdelivery_size_description">Mezinahiya herî zêde ya peyaman ku tê pejirandin. Yên mezintir tên redkirin.</string>
+    <string name="msgdelivery_size_unlimited">Bêsînor</string>
+    <string name="msgdelivery_custom">Taybet</string>
+    <string name="msgdelivery_section_sort">RÊZA PEYAMAN</string>
+    <string name="msgdelivery_sort_title">Li gor demê şanderê rêz bike</string>
+    <string name="msgdelivery_sort_on_desc">Peyam li gor demjimêra şanderê tên rêzkirin (dibe ne rast be)</string>
+    <string name="msgdelivery_sort_off_desc">Peyam li gor demê wergirtinê tên rêzkirin</string>
+    <string name="msgdelivery_select_relay_dialog_title">Rele Hilbijêre</string>
+    <string name="msgdelivery_no_propagation_nodes">Hîn girêya belavkirinê nehat dîtin. Li benda ragihandinan be an hashekê binivîse.</string>
+    <string name="msgdelivery_view_all_relays">Hemû Releyan Bibîne…</string>
+    <string name="msgdelivery_current">Heyî</string>
+    <string name="msgdelivery_custom_interval_title">Navbera Wergirtina Taybet</string>
+    <string name="msgdelivery_custom_interval_text">Navbera wergirtinê binivîse (1–12 demjimêr):</string>
+    <string name="msgdelivery_seconds">Çirke</string>
+    <string name="msgdelivery_custom_size_title">Sînora Mezinahiyê ya Taybet</string>
+    <string name="msgdelivery_custom_size_text">Mezinahiya herî zêde ya peyamê binivîse (1–128 MB):</string>
+    <string name="msgdelivery_mb">MB</string>
+    <string name="msgdelivery_auto_label">(xweber)</string>
+    <string name="action_cancel_generic">Betal</string>
+    <string name="action_confirm_generic">Pesend</string>
+    <string name="action_delete">Jê bibe</string>
+    <string name="action_block">Asteng bike</string>
+    <string name="action_not_now">Niha Na</string>
+
+    <!-- Ekrana sohbet -->
+    <string name="chats_title">Sohbet</string>
+    <string name="chats_subtitle_one">%1$d sohbet</string>
+    <string name="chats_subtitle_other">%1$d sohbet</string>
+    <string name="chats_qr_code">Koda QR</string>
+    <string name="chats_sync_messages">Peyaman hevdem bike</string>
+    <string name="chats_sync_complete">Hevdembûn temam bû</string>
+    <string name="chats_sync_complete_with_count">Hevdembûn temam: %1$d peyamên nû</string>
+    <string name="chats_sync_failed">Hevdembûn neserkeftî: %1$s</string>
+    <string name="chats_sync_no_relay">Releyek nehatiye mîhengkirin</string>
+    <string name="chats_sync_timed_out">Demê hevdembûnê derbas bû</string>
+    <string name="chats_saved_contact">Têkilî hate tomarkirin</string>
+    <string name="chats_removed_contact">Têkilî hate jêbirin</string>
+    <string name="chats_save_to_contacts">Bo Têkiliyan Tomar Bike</string>
+    <string name="chats_remove_from_contacts">Ji Têkiliyan Derxe</string>
+    <string name="chats_marked_as_unread">Wek nexwendî hate nîşankirin</string>
+    <string name="chats_deleted_conversation">Sohbeta bi %1$s re hate jêbirin</string>
+    <string name="chats_blocked_user">%1$s hate astengkirin</string>
+    <string name="chats_share_identity">Nasnameyê Parve Bike</string>
+    <string name="chats_no_conversations_yet">Hîna tu sohbet tune</string>
+    <string name="chats_messages_will_appear">Peyamên ji hevalan li vir xuya dibin</string>
+    <string name="chats_loading">Sohbet tê barkirin…</string>
+    <string name="chats_search_placeholder">Di sohbetan de bigere…</string>
+    <string name="chats_mark_as_unread">Wek nexwendî nîşan bike</string>
+    <string name="chats_view_peer_details">Hûragahiyên Hevalê Bibîne</string>
+    <string name="chats_delete_conversation">Sohbetê Jê Bibe</string>
+    <string name="chats_block_user">Bikarhêner Asteng Bike</string>
+    <string name="chats_delete_conversation_title">Sohbet jê bê birin?</string>
+    <string name="chats_delete_conversation_text">Tu bawer î ku tu dixwazî sohbeta xwe bi %1$s re jê bibî? Hemû peyam herûher tên jêbirin.</string>
+    <string name="chats_block_title">%1$s asteng bê?</string>
+    <string name="chats_block_text">Ew nikare ji te re peyaman bişîne. Sohbeta wan ji navnîşa sohbetan tê veşartin.</string>
+    <string name="chats_also_delete">Herwiha sohbet û peyaman jê bibe</string>
+    <string name="chats_also_blackhole">Ragihandinên wan jî nede (blackhole)</string>
+    <string name="chats_blackhole_transport_disabled">Veguhastin niha çalak nine. Dema veguhastin paşê çalak bibe ev nasname dê blackhole bibe.</string>
+
+    <!-- Tabaka destûra Bluetoothê -->
+    <string name="ble_perm_title">Destûrên Bluetoothê Pêwîst in</string>
+    <string name="ble_perm_grant">Destûrê Bide</string>
+    <string name="ble_perm_rationale">Columba ji bo ragihandina bi cîhazên nêzîk re di toreke meşê de Bluetooth Low Energy (BLE) bi kar tîne.\n\nJi bo çalakkirina vê fonksiyonê em hewceyî van destûran in:\n\n• Skana Bluetoothê: Ji bo dîtina hevalên Reticulum yên nêzîk\n• Girêdana Bluetoothê: Ji bo girêdanê bi hevalan re\n• Belavkirina Bluetoothê: Ji bo ragihandina hebûna te ji cîhazên din re\n\nEv destûr dihêlin ku Columba toreke ragihandinê ya nemerkezî û bê înternet biafirîne.</string>
+</resources>
+

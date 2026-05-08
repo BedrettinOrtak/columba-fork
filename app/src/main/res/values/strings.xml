@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- app_name is defined per build type in app/build.gradle.kts via resValue
-         (release: "Columba", debug: "columbatest") so debug + release builds can
+         (release: "Boran", debug: "Boran Test") so debug + release builds can
          coexist on a phone with distinct launcher labels. -->
 
     <!-- Incoming call screen -->
@@ -19,7 +19,7 @@
     <string name="service_restart_banner">Restarting Reticulum service\u2026</string>
 
     <!-- Offline mode banner -->
-    <string name="offline_banner_shutdown">Columba is offline</string>
+    <string name="offline_banner_shutdown">Boran is offline</string>
     <string name="offline_banner_error">Connection error</string>
     <string name="offline_banner_reconnecting">Reconnecting\u2026</string>
     <string name="offline_banner_reconnect">Reconnect</string>
@@ -30,4 +30,332 @@
     <string name="view_interface_details">View interface details</string>
     <string name="interface_actions">Interface actions</string>
     <string name="edit_interface">Edit interface</string>
+
+    <!-- Settings screen -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_system_info_copied">System info copied to clipboard</string>
+    <string name="settings_bug_report_copied">Bug report copied to clipboard</string>
+    <string name="settings_shared_instance_available">Shared instance available</string>
+    <string name="settings_shared_instance_switch">Switch</string>
+    <string name="settings_location_permission_info">Go to Permissions → Location to change</string>
+
+    <!-- Common -->
+    <string name="action_confirm">Confirm</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_collapse">Collapse</string>
+    <string name="action_expand">Expand</string>
+
+    <!-- Network card -->
+    <string name="network_title">Network</string>
+    <string name="network_status_description">Monitor your Reticulum network status, active interfaces, BLE connections, and connection diagnostics.</string>
+    <string name="network_interfaces_disabled_description">Interface management is disabled while using a shared system instance.</string>
+    <string name="network_interfaces_description">Configure how your device connects to the Reticulum network. Add TCP connections, auto-discovery, LoRa (via RNode), or BLE interfaces.</string>
+    <string name="network_view_status">View Network Status</string>
+    <string name="network_manage_interfaces">Manage Interfaces</string>
+
+    <!-- Identity card -->
+    <string name="identity_title">Identity</string>
+    <string name="identity_view_description">View and share your identity, edit your display name, and manage QR codes for contact sharing.</string>
+    <string name="identity_manage_description">Create and manage multiple identities for different contexts (work, personal, anonymous).</string>
+    <string name="identity_view_my_identity">View My Identity</string>
+    <string name="identity_manage_identities">Manage Identities</string>
+
+    <!-- Privacy card -->
+    <string name="privacy_title">Privacy</string>
+    <string name="privacy_block_on_description">Only contacts can message you. Messages from unknown senders are silently discarded.</string>
+    <string name="privacy_block_off_description">Anyone can send you messages, including unknown senders.</string>
+    <string name="privacy_blocked_users">Blocked Users</string>
+
+    <!-- Notifications card -->
+    <string name="notifications_title">Notifications</string>
+    <string name="notifications_enabled_description">Manage notification preferences for messages, announces, and Bluetooth events.</string>
+    <string name="notifications_disabled_description">All notifications are disabled. Enable to receive alerts for messages and events.</string>
+    <string name="notifications_manage">Manage Notifications</string>
+
+    <!-- Auto announce card -->
+    <string name="auto_announce_title">Auto Announce</string>
+    <string name="auto_announce_description">Automatically announce your presence on the network at regular intervals. This helps other peers discover you.</string>
+    <string name="auto_announce_interval_single">Announce Interval: 1 hour</string>
+    <string name="auto_announce_interval_plural">Announce Interval: %1$d hours</string>
+    <string name="auto_announce_custom">Custom</string>
+    <string name="auto_announce_custom_with_value">Custom (%1$dh)</string>
+    <string name="auto_announce_last_hours_ago">Last announce: %1$dh %2$dm ago</string>
+    <string name="auto_announce_last_minutes_ago">Last announce: %1$dm ago</string>
+    <string name="auto_announce_last_just_now">Last announce: just now</string>
+    <string name="auto_announce_none_sent">No announces sent yet</string>
+    <string name="auto_announce_next_soon">Next announce: soon</string>
+    <string name="auto_announce_next_hours">Next announce in: %1$dh %2$dm</string>
+    <string name="auto_announce_next_minutes">Next announce in: %1$dm</string>
+    <string name="auto_announce_announcing">Announcing…</string>
+    <string name="auto_announce_now">Announce Now</string>
+    <string name="auto_announce_success">Announce sent!</string>
+    <string name="auto_announce_error">Error: %1$s</string>
+    <string name="auto_announce_custom_dialog_title">Custom Interval</string>
+    <string name="auto_announce_custom_dialog_text">Enter announce interval (1–12 hours):</string>
+    <string name="auto_announce_hours_label">Hours</string>
+    <string name="auto_announce_value_range_error">Value must be between 1 and 12</string>
+
+    <!-- Image compression card -->
+    <string name="image_compression_title">Image Compression</string>
+    <string name="image_compression_description">Select compression level for image attachments. Auto mode detects your network type and selects the optimal preset.</string>
+    <string name="image_compression_slow_warning">Slow interfaces (LoRa/BLE) are enabled. Sending large images may take a very long time or fail.</string>
+
+    <!-- Battery & Background card -->
+    <string name="battery_title">Battery &amp; Background</string>
+    <string name="battery_description">Choose how aggressively Boran should run native Reticulum in the background. Changes apply immediately.</string>
+    <string name="battery_exempted_description">Battery optimization exemption granted. Boran can run more reliably in the background during deep idle.</string>
+    <string name="battery_not_exempted_description">Android battery optimization is still enabled. The battery profile above reduces background work, but Android may still delay or kill background networking unless Boran is exempted.</string>
+    <string name="battery_view_settings">View Battery Settings</string>
+    <string name="battery_request_exemption">Request Exemption</string>
+    <string name="battery_open_settings_manually">Open Battery Settings Manually</string>
+
+    <!-- Advanced card -->
+    <string name="advanced_title">Advanced</string>
+    <string name="advanced_transport_node">Transport Node</string>
+    <string name="advanced_transport_node_description">Forward traffic for the mesh network. When disabled, this device will only handle its own traffic and won\'t relay messages for other peers. It\'s generally not recommended for mobile devices to be transport nodes. They are less likely to maintain a fixed position in the network, and thus can negatively impact multihop routing. Enabling this will increase data usage and battery drain. However, in a BLE-only mesh, it\'s required for multi-hop messaging.</string>
+
+    <!-- Language card -->
+    <string name="language_title">Language</string>
+    <string name="language_description">Select your preferred language for the app interface.</string>
+    <string name="language_system_default">System Default</string>
+    <string name="language_english">English</string>
+    <string name="language_turkish">Türkçe</string>
+    <string name="language_persian">فارسی</string>
+    <string name="language_kurdish">Kurdî</string>
+
+    <!-- Startup language selection -->
+    <string name="first_launch_language_title">Choose your language</string>
+    <string name="first_launch_language_subtitle">Select the app language before setup</string>
+    <string name="first_launch_language_hint">You can change this later in Settings.</string>
+
+    <!-- Settings extras -->
+    <string name="settings_share_identity">Share Identity</string>
+    <string name="settings_developer_title">Developer Settings</string>
+    <string name="settings_developer_locked">Locked</string>
+    <string name="settings_developer_unlocked">Unlocked</string>
+    <string name="settings_developer_lock">Lock</string>
+    <string name="settings_developer_unlock">Unlock</string>
+    <string name="settings_password">Password</string>
+    <string name="settings_wrong_password">Wrong password</string>
+
+    <!-- Onboarding common -->
+    <string name="onboarding_action_back">Back</string>
+    <string name="onboarding_action_continue">Continue</string>
+    <string name="onboarding_action_enable">Enable</string>
+    <string name="onboarding_action_skip">Skip</string>
+
+    <!-- Onboarding welcome -->
+    <string name="onboarding_welcome_title">Welcome to Boran</string>
+    <string name="onboarding_welcome_subtitle">A private messenger that requires:</string>
+    <string name="onboarding_welcome_feature_no_phone">No phone number</string>
+    <string name="onboarding_welcome_feature_no_email">No email address</string>
+    <string name="onboarding_welcome_feature_no_signup">No sign-up or accounts</string>
+    <string name="onboarding_welcome_identity_description">Your identity is generated and stored securely on your device. You control it completely.</string>
+    <string name="onboarding_welcome_get_started">Get Started</string>
+    <string name="onboarding_welcome_restore_backup">Restore from backup</string>
+
+    <!-- Onboarding identity -->
+    <string name="onboarding_identity_title">Your Identity</string>
+    <string name="onboarding_identity_subtitle">Choose a display name others will see:</string>
+    <string name="onboarding_identity_display_name_label">Display Name</string>
+    <string name="onboarding_identity_display_name_placeholder">Anonymous Peer</string>
+    <string name="onboarding_identity_helper">You can change this anytime, or create multiple identities for different contexts.</string>
+
+    <!-- Onboarding connectivity -->
+    <string name="onboarding_connectivity_title">How will you connect?</string>
+    <string name="onboarding_connectivity_subtitle">Select the networks you\'d like to use:</string>
+    <string name="onboarding_connectivity_permissions_denied">Permissions denied</string>
+    <string name="onboarding_connectivity_permissions_granted">Permissions granted</string>
+    <string name="onboarding_connectivity_helper">You can configure these later in Settings</string>
+    <string name="onboarding_connectivity_interface_auto">Local WiFi</string>
+    <string name="onboarding_connectivity_interface_auto_desc">Discover peers on your local network</string>
+    <string name="onboarding_connectivity_interface_auto_secondary">No internet required</string>
+    <string name="onboarding_connectivity_interface_ble">Bluetooth LE</string>
+    <string name="onboarding_connectivity_interface_ble_desc">Connect directly to nearby devices</string>
+    <string name="onboarding_connectivity_interface_ble_secondary">Requires Bluetooth permissions</string>
+    <string name="onboarding_connectivity_interface_tcp">Internet (TCP)</string>
+    <string name="onboarding_connectivity_interface_tcp_desc">Connect to the global Reticulum network</string>
+    <string name="onboarding_connectivity_interface_tcp_secondary">Requires internet connection</string>
+    <string name="onboarding_connectivity_interface_rnode">LoRa Radio</string>
+    <string name="onboarding_connectivity_interface_rnode_desc">Long-range mesh via RNode hardware</string>
+    <string name="onboarding_connectivity_interface_rnode_secondary">Requires external hardware - configure in Settings</string>
+
+    <!-- Onboarding permissions -->
+    <string name="onboarding_permissions_title">Stay Connected</string>
+    <string name="onboarding_permissions_subtitle">Boran can notify you when:</string>
+    <string name="onboarding_permissions_feature_messages">New messages arrive</string>
+    <string name="onboarding_permissions_feature_contact_added">Someone adds you as a contact</string>
+    <string name="onboarding_permissions_feature_delivery">Delivery confirmations are received</string>
+    <string name="onboarding_permissions_notifications_title">Notifications</string>
+    <string name="onboarding_permissions_notifications_desc">Get alerts for new messages</string>
+    <string name="onboarding_permissions_battery_title">Unrestricted Battery</string>
+    <string name="onboarding_permissions_battery_desc">Receive messages even when phone is idle</string>
+    <string name="onboarding_permissions_battery_secondary">Prevents Android from pausing Boran</string>
+
+    <!-- Onboarding complete -->
+    <string name="onboarding_complete_title">You\'re all set!</string>
+    <string name="onboarding_complete_summary_title">Summary</string>
+    <string name="onboarding_complete_summary_identity">Identity</string>
+    <string name="onboarding_complete_summary_networks">Networks</string>
+    <string name="onboarding_complete_summary_none_selected">None selected</string>
+    <string name="onboarding_complete_summary_notifications">Notifications</string>
+    <string name="onboarding_complete_summary_battery">Battery</string>
+    <string name="onboarding_complete_enabled">Enabled</string>
+    <string name="onboarding_complete_disabled">Disabled</string>
+    <string name="onboarding_complete_battery_unrestricted">Unrestricted</string>
+    <string name="onboarding_complete_battery_restricted">Restricted</string>
+    <string name="onboarding_complete_show_qr">Show QR Code</string>
+    <string name="onboarding_complete_qr_hint">Share your identity QR code to let others add you as a contact.</string>
+    <string name="onboarding_complete_configure_lora">Configure LoRa Radio</string>
+    <string name="onboarding_complete_start_messaging">Start Messaging</string>
+    <string name="onboarding_complete_share_identity">Share identity</string>
+    <string name="onboarding_complete_share_text">Add me on Reticulum:\n\n%1$s\n%2$s</string>
+
+    <!-- Bottom navigation tabs / screen titles -->
+    <string name="nav_chats">Chats</string>
+    <string name="nav_announces">Announces</string>
+    <string name="nav_contacts">Contacts</string>
+    <string name="nav_map">Map</string>
+    <string name="nav_network_status">Network Status</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_welcome">Welcome</string>
+    <string name="nav_restore_identity">Restore Identity</string>
+
+    <!-- About card -->
+    <string name="about_title">About</string>
+    <string name="about_logo_description">Columba Logo</string>
+    <string name="about_tagline">Native Android messaging app using Bluetooth LE, TCP, or RNode (LoRa) over LXMF and Reticulum</string>
+    <string name="about_section_app_info">App Information</string>
+    <string name="about_section_device_info">Device Information</string>
+    <string name="about_section_protocol_versions">Protocol Versions</string>
+    <string name="about_section_identity">Identity</string>
+    <string name="about_section_links">Links &amp; Resources</string>
+    <string name="about_section_built_with">Built With</string>
+    <string name="about_section_updates">Updates</string>
+    <string name="about_field_version">Version</string>
+    <string name="about_field_build_number">Build Number</string>
+    <string name="about_field_build_type">Build Type</string>
+    <string name="about_field_git_commit">Git Commit</string>
+    <string name="about_field_build_date">Build Date</string>
+    <string name="about_field_android_version">Android Version</string>
+    <string name="about_field_api_level">API Level</string>
+    <string name="about_field_device_model">Device Model</string>
+    <string name="about_field_manufacturer">Manufacturer</string>
+    <string name="about_field_identity_hash">Identity Hash</string>
+    <string name="about_link_github">GitHub Repository</string>
+    <string name="about_link_report_issue">Report an Issue</string>
+    <string name="about_link_about_reticulum">About Reticulum</string>
+    <string name="about_legal_license">GNU AGPLv3</string>
+    <string name="about_legal_copyright">© 2025–%1$s Columba Contributors</string>
+    <string name="about_view_license">View License</string>
+    <string name="about_include_prereleases">Include pre-releases</string>
+    <string name="about_check_for_updates">Check for Updates</string>
+    <string name="about_up_to_date">Up to date (v%1$s)</string>
+    <string name="about_update_available">Update available: %1$s</string>
+    <string name="about_view_release">View Release</string>
+    <string name="about_copy_system_info">Copy System Info</string>
+    <string name="about_report_bug">Report Bug</string>
+
+    <!-- Battery profiles -->
+    <string name="battery_profile_max_battery">Maximum Battery</string>
+    <string name="battery_profile_max_battery_desc">Best battery life with slower background networking and discovery.</string>
+    <string name="battery_profile_balanced">Balanced</string>
+    <string name="battery_profile_balanced_desc">Good battery life with normal responsiveness for most users.</string>
+    <string name="battery_profile_performance">Performance</string>
+    <string name="battery_profile_performance_desc">Fastest path recovery and networking responsiveness at higher battery cost.</string>
+
+    <!-- Message Delivery &amp; Retrieval card -->
+    <string name="msgdelivery_title">Message Delivery &amp; Retrieval</string>
+    <string name="msgdelivery_description">Configure how messages are sent and retrieved via relay.</string>
+    <string name="msgdelivery_default_method">Default Delivery Method</string>
+    <string name="msgdelivery_method_direct">Direct (Link-based)</string>
+    <string name="msgdelivery_method_direct_desc">Establishes a link, unlimited size, with retries</string>
+    <string name="msgdelivery_method_propagated">Propagated (Via Relay)</string>
+    <string name="msgdelivery_method_propagated_desc">Stores message on relay for offline recipients</string>
+    <string name="msgdelivery_retry_relay_title">Retry via Relay on Failure</string>
+    <string name="msgdelivery_retry_relay_desc">If direct delivery fails, retry through relay</string>
+    <string name="msgdelivery_my_relay">My Relay</string>
+    <string name="msgdelivery_auto_select">Auto-select nearest</string>
+    <string name="msgdelivery_currently">Currently: %1$s</string>
+    <string name="msgdelivery_use_specific">Use specific relay</string>
+    <string name="msgdelivery_no_relay_selected">No relay selected</string>
+    <string name="msgdelivery_tap_to_select">Tap to select a different relay</string>
+    <string name="msgdelivery_no_relay_configured">No relay configured. Waiting for propagation node announces…</string>
+    <string name="msgdelivery_select_from_available">Select from available relays</string>
+    <string name="msgdelivery_or_enter_manually">Or enter a relay hash manually:</string>
+    <string name="msgdelivery_enter_relay_hash">Enter relay destination hash:</string>
+    <string name="msgdelivery_destination_hash">Destination Hash</string>
+    <string name="msgdelivery_hash_placeholder">32-character hex</string>
+    <string name="msgdelivery_nickname_optional">Nickname (optional)</string>
+    <string name="msgdelivery_nickname_placeholder">e.g., My Home Relay</string>
+    <string name="msgdelivery_set_as_relay">Set as Relay</string>
+    <string name="msgdelivery_section_retrieval">MESSAGE RETRIEVAL</string>
+    <string name="msgdelivery_auto_retrieve">Auto-retrieve from relay</string>
+    <string name="msgdelivery_auto_retrieve_desc">Periodically check for messages</string>
+    <string name="msgdelivery_sync_now">Sync Now</string>
+    <string name="msgdelivery_syncing">Syncing…</string>
+    <string name="msgdelivery_section_size">INCOMING MESSAGE SIZE</string>
+    <string name="msgdelivery_size_description">Maximum size of messages to accept. Larger messages will be rejected.</string>
+    <string name="msgdelivery_size_unlimited">Unlimited</string>
+    <string name="msgdelivery_custom">Custom</string>
+    <string name="msgdelivery_section_sort">MESSAGE SORT ORDER</string>
+    <string name="msgdelivery_sort_title">Sort by sender\'s time</string>
+    <string name="msgdelivery_sort_on_desc">Messages ordered by sender\'s clock (may be inaccurate)</string>
+    <string name="msgdelivery_sort_off_desc">Messages ordered by when you received them</string>
+    <string name="msgdelivery_select_relay_dialog_title">Select Relay</string>
+    <string name="msgdelivery_no_propagation_nodes">No propagation nodes discovered yet. Wait for announces or enter a hash manually.</string>
+    <string name="msgdelivery_view_all_relays">View All Relays…</string>
+    <string name="msgdelivery_current">Current</string>
+    <string name="msgdelivery_custom_interval_title">Custom Retrieval Interval</string>
+    <string name="msgdelivery_custom_interval_text">Enter retrieval interval (1–12 hours):</string>
+    <string name="msgdelivery_seconds">Seconds</string>
+    <string name="msgdelivery_custom_size_title">Custom Size Limit</string>
+    <string name="msgdelivery_custom_size_text">Enter maximum message size (1–128 MB):</string>
+    <string name="msgdelivery_mb">MB</string>
+    <string name="msgdelivery_auto_label">(auto)</string>
+    <string name="action_cancel_generic">Cancel</string>
+    <string name="action_confirm_generic">Confirm</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_block">Block</string>
+    <string name="action_not_now">Not Now</string>
+
+    <!-- Chats screen -->
+    <string name="chats_title">Chats</string>
+    <string name="chats_subtitle_one">%1$d conversation</string>
+    <string name="chats_subtitle_other">%1$d conversations</string>
+    <string name="chats_qr_code">QR Code</string>
+    <string name="chats_sync_messages">Sync messages</string>
+    <string name="chats_sync_complete">Sync complete</string>
+    <string name="chats_sync_complete_with_count">Sync complete: %1$d new messages</string>
+    <string name="chats_sync_failed">Sync failed: %1$s</string>
+    <string name="chats_sync_no_relay">No relay configured</string>
+    <string name="chats_sync_timed_out">Sync timed out</string>
+    <string name="chats_saved_contact">Saved contact</string>
+    <string name="chats_removed_contact">Removed contact</string>
+    <string name="chats_save_to_contacts">Save to Contacts</string>
+    <string name="chats_remove_from_contacts">Remove from Contacts</string>
+    <string name="chats_marked_as_unread">Marked as unread</string>
+    <string name="chats_deleted_conversation">Deleted conversation with %1$s</string>
+    <string name="chats_blocked_user">Blocked %1$s</string>
+    <string name="chats_share_identity">Share Identity</string>
+    <string name="chats_no_conversations_yet">No conversations yet</string>
+    <string name="chats_messages_will_appear">Messages from peers will appear here</string>
+    <string name="chats_loading">Loading conversations…</string>
+    <string name="chats_search_placeholder">Search conversations…</string>
+    <string name="chats_mark_as_unread">Mark as Unread</string>
+    <string name="chats_view_peer_details">View Peer Details</string>
+    <string name="chats_delete_conversation">Delete Conversation</string>
+    <string name="chats_block_user">Block User</string>
+    <string name="chats_delete_conversation_title">Delete Conversation?</string>
+    <string name="chats_delete_conversation_text">Are you sure you want to delete your conversation with %1$s? This will permanently delete all messages.</string>
+    <string name="chats_block_title">Block %1$s?</string>
+    <string name="chats_block_text">They won\'t be able to send you messages. Their conversation will be hidden from the chat list.</string>
+    <string name="chats_also_delete">Also delete conversation and messages</string>
+    <string name="chats_also_blackhole">Also blackhole (don\'t relay their announces)</string>
+    <string name="chats_blackhole_transport_disabled">Transport is currently disabled. This identity will be blackholed whenever transport is later enabled.</string>
+
+    <!-- Bluetooth permission bottom sheet -->
+    <string name="ble_perm_title">Bluetooth Permissions Required</string>
+    <string name="ble_perm_grant">Grant Permissions</string>
+    <string name="ble_perm_rationale">Columba uses Bluetooth Low Energy (BLE) to communicate with nearby devices in a mesh network.\n\nTo enable this functionality, we need the following permissions:\n\n• Bluetooth Scan: To discover nearby Reticulum peers\n• Bluetooth Connect: To establish connections with peers\n• Bluetooth Advertise: To broadcast your presence to other devices\n\nThese permissions allow Columba to create a decentralized, off-grid communication network.</string>
 </resources>
