@@ -192,7 +192,7 @@
 
     <!-- About card -->
     <string name="about_title">Derbarê</string>
-    <string name="about_logo_description">Logoya Columba</string>
+    <string name="about_logo_description">Logoya Boran</string>
     <string name="about_tagline">Bernameya peyaman a Androidê ya xwemalî bi Bluetooth LE, TCP an jî RNode (LoRa) bi rêya LXMF û Reticulum</string>
     <string name="about_section_app_info">Agahiyên Bernameyê</string>
     <string name="about_section_device_info">Agahiyên Cîhazê</string>
@@ -215,7 +215,7 @@
     <string name="about_link_report_issue">Pirsgirêkê Ragihîne</string>
     <string name="about_link_about_reticulum">Derbarê Reticulum</string>
     <string name="about_legal_license">GNU AGPLv3</string>
-    <string name="about_legal_copyright">© 2025–%1$s Beşdarên Columba</string>
+    <string name="about_legal_copyright">© 2025–%1$s Beşdarên Boran</string>
     <string name="about_view_license">Lîsansê Bibîne</string>
     <string name="about_include_prereleases">Pêş-guhertoyan jî tev bigire</string>
     <string name="about_check_for_updates">Nûkirinan Kontrol Bike</string>
@@ -326,6 +326,6 @@
     <!-- Tabaka destûra Bluetoothê -->
     <string name="ble_perm_title">Destûrên Bluetoothê Pêwîst in</string>
     <string name="ble_perm_grant">Destûrê Bide</string>
-    <string name="ble_perm_rationale">Columba ji bo ragihandina bi cîhazên nêzîk re di toreke meşê de Bluetooth Low Energy (BLE) bi kar tîne.\n\nJi bo çalakkirina vê fonksiyonê em hewceyî van destûran in:\n\n• Skana Bluetoothê: Ji bo dîtina hevalên Reticulum yên nêzîk\n• Girêdana Bluetoothê: Ji bo girêdanê bi hevalan re\n• Belavkirina Bluetoothê: Ji bo ragihandina hebûna te ji cîhazên din re\n\nEv destûr dihêlin ku Columba toreke ragihandinê ya nemerkezî û bê înternet biafirîne.</string>
+    <string name="ble_perm_rationale">Boran ji bo ragihandina bi cîhazên nêzîk re di toreke meşê de Bluetooth Low Energy (BLE) bi kar tîne.\n\nJi bo çalakkirina vê fonksiyonê em hewceyî van destûran in:\n\n• Skana Bluetoothê: Ji bo dîtina hevalên Reticulum yên nêzîk\n• Girêdana Bluetoothê: Ji bo girêdanê bi hevalan re\n• Belavkirina Bluetoothê: Ji bo ragihandina hebûna te ji cîhazên din re\n\nEv destûr dihêlin ku Boran toreke ragihandinê ya nemerkezî û bê înternet biafirîne.</string>
 </resources>
 

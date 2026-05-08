@@ -223,7 +223,7 @@
 
     <!-- About card -->
     <string name="about_title">About</string>
-    <string name="about_logo_description">Columba Logo</string>
+    <string name="about_logo_description">Boran Logo</string>
     <string name="about_tagline">Native Android messaging app using Bluetooth LE, TCP, or RNode (LoRa) over LXMF and Reticulum</string>
     <string name="about_section_app_info">App Information</string>
     <string name="about_section_device_info">Device Information</string>
@@ -246,7 +246,7 @@
     <string name="about_link_report_issue">Report an Issue</string>
     <string name="about_link_about_reticulum">About Reticulum</string>
     <string name="about_legal_license">GNU AGPLv3</string>
-    <string name="about_legal_copyright">© 2025–%1$s Columba Contributors</string>
+    <string name="about_legal_copyright">© 2025–%1$s Boran Contributors</string>
     <string name="about_view_license">View License</string>
     <string name="about_include_prereleases">Include pre-releases</string>
     <string name="about_check_for_updates">Check for Updates</string>
@@ -357,5 +357,5 @@
     <!-- Bluetooth permission bottom sheet -->
     <string name="ble_perm_title">Bluetooth Permissions Required</string>
     <string name="ble_perm_grant">Grant Permissions</string>
-    <string name="ble_perm_rationale">Columba uses Bluetooth Low Energy (BLE) to communicate with nearby devices in a mesh network.\n\nTo enable this functionality, we need the following permissions:\n\n• Bluetooth Scan: To discover nearby Reticulum peers\n• Bluetooth Connect: To establish connections with peers\n• Bluetooth Advertise: To broadcast your presence to other devices\n\nThese permissions allow Columba to create a decentralized, off-grid communication network.</string>
+    <string name="ble_perm_rationale">Boran uses Bluetooth Low Energy (BLE) to communicate with nearby devices in a mesh network.\n\nTo enable this functionality, we need the following permissions:\n\n• Bluetooth Scan: To discover nearby Reticulum peers\n• Bluetooth Connect: To establish connections with peers\n• Bluetooth Advertise: To broadcast your presence to other devices\n\nThese permissions allow Boran to create a decentralized, off-grid communication network.</string>
 </resources>

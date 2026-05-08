@@ -192,7 +192,7 @@
 
     <!-- About card -->
     <string name="about_title">Hakkında</string>
-    <string name="about_logo_description">Columba Logosu</string>
+    <string name="about_logo_description">Boran Logosu</string>
     <string name="about_tagline">Bluetooth LE, TCP veya RNode (LoRa) üzerinden LXMF ve Reticulum kullanan yerel bir Android mesajlaşma uygulaması</string>
     <string name="about_section_app_info">Uygulama Bilgisi</string>
     <string name="about_section_device_info">Cihaz Bilgisi</string>
@@ -215,7 +215,7 @@
     <string name="about_link_report_issue">Sorun Bildir</string>
     <string name="about_link_about_reticulum">Reticulum Hakkında</string>
     <string name="about_legal_license">GNU AGPLv3</string>
-    <string name="about_legal_copyright">© 2025–%1$s Columba Katkıda Bulunanlar</string>
+    <string name="about_legal_copyright">© 2025–%1$s Boran Katkıda Bulunanlar</string>
     <string name="about_view_license">Lisansı Görüntüle</string>
     <string name="about_include_prereleases">Ön sürümleri dahil et</string>
     <string name="about_check_for_updates">Güncellemeleri Denetle</string>
@@ -326,6 +326,6 @@
     <!-- Bluetooth izin alt sayfası -->
     <string name="ble_perm_title">Bluetooth İzinleri Gerekli</string>
     <string name="ble_perm_grant">İzin Ver</string>
-    <string name="ble_perm_rationale">Columba, çevrenizdeki cihazlarla mesh ağında haberleşmek için Bluetooth Low Energy (BLE) kullanır.\n\nBu işlevi etkinleştirmek için şu izinler gereklidir:\n\n• Bluetooth Tarama: Yakındaki Reticulum eşlerini bulmak için\n• Bluetooth Bağlanma: Eşlerle bağlantı kurmak için\n• Bluetooth Yayınlama: Diğer cihazlara varlığınızı bildirmek için\n\nBu izinler Columba\'nın merkeziyetsiz, internet dışı bir iletişim ağı kurmasına olanak tanır.</string>
+    <string name="ble_perm_rationale">Boran, çevrenizdeki cihazlarla mesh ağında haberleşmek için Bluetooth Low Energy (BLE) kullanır.\n\nBu işlevi etkinleştirmek için şu izinler gereklidir:\n\n• Bluetooth Tarama: Yakındaki Reticulum eşlerini bulmak için\n• Bluetooth Bağlanma: Eşlerle bağlantı kurmak için\n• Bluetooth Yayınlama: Diğer cihazlara varlığınızı bildirmek için\n\nBu izinler Boran\'nın merkeziyetsiz, internet dışı bir iletişim ağı kurmasına olanak tanır.</string>
 </resources>
 

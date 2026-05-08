@@ -192,7 +192,7 @@
 
     <!-- About card -->
     <string name="about_title">درباره</string>
-    <string name="about_logo_description">لوگوی Columba</string>
+    <string name="about_logo_description">لوگوی Boran</string>
     <string name="about_tagline">برنامه پیام‌رسان بومی اندروید با استفاده از Bluetooth LE، TCP یا RNode (LoRa) روی LXMF و Reticulum</string>
     <string name="about_section_app_info">اطلاعات برنامه</string>
     <string name="about_section_device_info">اطلاعات دستگاه</string>
@@ -215,7 +215,7 @@
     <string name="about_link_report_issue">گزارش مشکل</string>
     <string name="about_link_about_reticulum">درباره Reticulum</string>
     <string name="about_legal_license">GNU AGPLv3</string>
-    <string name="about_legal_copyright">© ۲۰۲۵–%1$s مشارکت‌کنندگان Columba</string>
+    <string name="about_legal_copyright">© ۲۰۲۵–%1$s مشارکت‌کنندگان Boran</string>
     <string name="about_view_license">مشاهده مجوز</string>
     <string name="about_include_prereleases">شامل پیش‌نسخه‌ها</string>
     <string name="about_check_for_updates">بررسی به‌روزرسانی</string>
@@ -326,6 +326,6 @@
     <!-- پنل اجازه بلوتوث -->
     <string name="ble_perm_title">اجازه بلوتوث لازم است</string>
     <string name="ble_perm_grant">اعطای اجازه</string>
-    <string name="ble_perm_rationale">Columba برای ارتباط با دستگاه‌های نزدیک در شبکه مش از Bluetooth Low Energy (BLE) استفاده می‌کند.\n\nبرای فعال‌سازی این قابلیت به اجازه‌های زیر نیاز است:\n\n• اسکن بلوتوث: برای کشف همتایان Reticulum نزدیک\n• اتصال بلوتوث: برای برقراری ارتباط با همتایان\n• تبلیغ بلوتوث: برای اعلام حضور به دستگاه‌های دیگر\n\nاین اجازه‌ها به Columba امکان ساختن یک شبکه ارتباطی غیرمتمرکز و بدون اینترنت را می‌دهند.</string>
+    <string name="ble_perm_rationale">Boran برای ارتباط با دستگاه‌های نزدیک در شبکه مش از Bluetooth Low Energy (BLE) استفاده می‌کند.\n\nبرای فعال‌سازی این قابلیت به اجازه‌های زیر نیاز است:\n\n• اسکن بلوتوث: برای کشف همتایان Reticulum نزدیک\n• اتصال بلوتوث: برای برقراری ارتباط با همتایان\n• تبلیغ بلوتوث: برای اعلام حضور به دستگاه‌های دیگر\n\nاین اجازه‌ها به Boran امکان ساختن یک شبکه ارتباطی غیرمتمرکز و بدون اینترنت را می‌دهند.</string>
 </resources>
 
