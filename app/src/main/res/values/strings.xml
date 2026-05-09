@@ -358,4 +358,34 @@
     <string name="ble_perm_title">Bluetooth Permissions Required</string>
     <string name="ble_perm_grant">Grant Permissions</string>
     <string name="ble_perm_rationale">Boran uses Bluetooth Low Energy (BLE) to communicate with nearby devices in a mesh network.\n\nTo enable this functionality, we need the following permissions:\n\n• Bluetooth Scan: To discover nearby Reticulum peers\n• Bluetooth Connect: To establish connections with peers\n• Bluetooth Advertise: To broadcast your presence to other devices\n\nThese permissions allow Boran to create a decentralized, off-grid communication network.</string>
+
+    <!-- Network Interfaces (auto-added) -->
+    <string name="if_title">Network Interfaces</string>
+    <string name="if_apply_changes">Apply Changes</string>
+    <string name="if_add_interface">Add Interface</string>
+    <string name="if_type_interface_desc">%1$s interface</string>
+    <string name="if_ble_perm_required">BLE permission required</string>
+    <string name="action_grant">Grant</string>
+    <string name="action_back">Back</string>
+    <string name="action_ok">OK</string>
+    <string name="action_view_details">View details</string>
+    <string name="if_peer_count_one">%1$d peer</string>
+    <string name="if_peer_count_other">%1$d peers</string>
+    <string name="if_delete_title">Delete Interface?</string>
+    <string name="if_delete_text">Are you sure you want to delete \"%1$s\"? This action cannot be undone.</string>
+    <string name="if_applying_changes">Applying Changes</string>
+    <string name="if_apply_failed_title">Failed to Apply Changes</string>
+    <string name="if_apply_failed_text">An error occurred while applying configuration changes:</string>
+    <string name="if_select_type">Select Interface Type</string>
+    <string name="if_type_auto">Auto Discovery</string>
+    <string name="if_type_tcp_client">TCP Client</string>
+    <string name="if_type_ble">Bluetooth LE</string>
+    <string name="if_type_rnode">RNode LoRa</string>
+    <string name="if_type_tcp_server">TCP Server</string>
+    <string name="if_advanced">Advanced</string>
+    <string name="if_issue_title">Interface Issue</string>
+    <string name="if_discovery_title">Interface Discovery</string>
+    <string name="if_discovery_count">%1$d interfaces found via RNS Discovery</string>
+    <string name="if_discovery_empty">Discovery enabled - no interfaces found yet</string>
+    <string name="if_discovery_hint">Tap to configure RNS 1.1.x interface discovery</string>
 </resources>

@@ -327,5 +327,35 @@
     <string name="ble_perm_title">Bluetooth İzinleri Gerekli</string>
     <string name="ble_perm_grant">İzin Ver</string>
     <string name="ble_perm_rationale">Boran, çevrenizdeki cihazlarla mesh ağında haberleşmek için Bluetooth Low Energy (BLE) kullanır.\n\nBu işlevi etkinleştirmek için şu izinler gereklidir:\n\n• Bluetooth Tarama: Yakındaki Reticulum eşlerini bulmak için\n• Bluetooth Bağlanma: Eşlerle bağlantı kurmak için\n• Bluetooth Yayınlama: Diğer cihazlara varlığınızı bildirmek için\n\nBu izinler Boran\'nın merkeziyetsiz, internet dışı bir iletişim ağı kurmasına olanak tanır.</string>
+
+    <!-- Network Interfaces (auto-added) -->
+    <string name="if_title">Ağ Arayüzleri</string>
+    <string name="if_apply_changes">Değişiklikleri Uygula</string>
+    <string name="if_add_interface">Arayüz Ekle</string>
+    <string name="if_type_interface_desc">%1$s arayüzü</string>
+    <string name="if_ble_perm_required">BLE izni gerekli</string>
+    <string name="action_grant">İzin Ver</string>
+    <string name="action_back">Geri</string>
+    <string name="action_ok">Tamam</string>
+    <string name="action_view_details">Detayları gör</string>
+    <string name="if_peer_count_one">%1$d eş</string>
+    <string name="if_peer_count_other">%1$d eş</string>
+    <string name="if_delete_title">Arayüzü Sil?</string>
+    <string name="if_delete_text">\"%1$s\" arayüzünü silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.</string>
+    <string name="if_applying_changes">Değişiklikler Uygulanıyor</string>
+    <string name="if_apply_failed_title">Değişiklikler Uygulanamadı</string>
+    <string name="if_apply_failed_text">Yapılandırma değişiklikleri uygulanırken bir hata oluştu:</string>
+    <string name="if_select_type">Arayüz Türü Seçin</string>
+    <string name="if_type_auto">Otomatik Keşif</string>
+    <string name="if_type_tcp_client">TCP İstemci</string>
+    <string name="if_type_ble">Bluetooth LE</string>
+    <string name="if_type_rnode">RNode LoRa</string>
+    <string name="if_type_tcp_server">TCP Sunucu</string>
+    <string name="if_advanced">Gelişmiş</string>
+    <string name="if_issue_title">Arayüz Sorunu</string>
+    <string name="if_discovery_title">Arayüz Keşfi</string>
+    <string name="if_discovery_count">RNS Keşfi ile %1$d arayüz bulundu</string>
+    <string name="if_discovery_empty">Keşif etkin - henüz arayüz bulunamadı</string>
+    <string name="if_discovery_hint">RNS 1.1.x arayüz keşfini yapılandırmak için dokunun</string>
 </resources>
 

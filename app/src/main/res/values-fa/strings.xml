@@ -327,5 +327,35 @@
     <string name="ble_perm_title">اجازه بلوتوث لازم است</string>
     <string name="ble_perm_grant">اعطای اجازه</string>
     <string name="ble_perm_rationale">Boran برای ارتباط با دستگاه‌های نزدیک در شبکه مش از Bluetooth Low Energy (BLE) استفاده می‌کند.\n\nبرای فعال‌سازی این قابلیت به اجازه‌های زیر نیاز است:\n\n• اسکن بلوتوث: برای کشف همتایان Reticulum نزدیک\n• اتصال بلوتوث: برای برقراری ارتباط با همتایان\n• تبلیغ بلوتوث: برای اعلام حضور به دستگاه‌های دیگر\n\nاین اجازه‌ها به Boran امکان ساختن یک شبکه ارتباطی غیرمتمرکز و بدون اینترنت را می‌دهند.</string>
+
+    <!-- Network Interfaces (auto-added) -->
+    <string name="if_title">رابط‌های شبکه</string>
+    <string name="if_apply_changes">اعمال تغییرات</string>
+    <string name="if_add_interface">افزودن رابط</string>
+    <string name="if_type_interface_desc">رابط %1$s</string>
+    <string name="if_ble_perm_required">اجازه BLE لازم است</string>
+    <string name="action_grant">اعطا</string>
+    <string name="action_back">بازگشت</string>
+    <string name="action_ok">باشه</string>
+    <string name="action_view_details">مشاهده جزئیات</string>
+    <string name="if_peer_count_one">%1$d همتا</string>
+    <string name="if_peer_count_other">%1$d همتا</string>
+    <string name="if_delete_title">حذف رابط؟</string>
+    <string name="if_delete_text">آیا مطمئنید که می‌خواهید \"%1$s\" را حذف کنید؟ این عمل قابل بازگشت نیست.</string>
+    <string name="if_applying_changes">در حال اعمال تغییرات</string>
+    <string name="if_apply_failed_title">اعمال تغییرات ناموفق بود</string>
+    <string name="if_apply_failed_text">هنگام اعمال تغییرات پیکربندی خطایی رخ داد:</string>
+    <string name="if_select_type">انتخاب نوع رابط</string>
+    <string name="if_type_auto">کشف خودکار</string>
+    <string name="if_type_tcp_client">کلاینت TCP</string>
+    <string name="if_type_ble">بلوتوث LE</string>
+    <string name="if_type_rnode">RNode LoRa</string>
+    <string name="if_type_tcp_server">سرور TCP</string>
+    <string name="if_advanced">پیشرفته</string>
+    <string name="if_issue_title">مشکل رابط</string>
+    <string name="if_discovery_title">کشف رابط</string>
+    <string name="if_discovery_count">%1$d رابط از طریق کشف RNS یافت شد</string>
+    <string name="if_discovery_empty">کشف فعال است - هنوز رابطی یافت نشده</string>
+    <string name="if_discovery_hint">برای پیکربندی کشف رابط RNS 1.1.x ضربه بزنید</string>
 </resources>
 

@@ -327,5 +327,35 @@
     <string name="ble_perm_title">Destûrên Bluetoothê Pêwîst in</string>
     <string name="ble_perm_grant">Destûrê Bide</string>
     <string name="ble_perm_rationale">Boran ji bo ragihandina bi cîhazên nêzîk re di toreke meşê de Bluetooth Low Energy (BLE) bi kar tîne.\n\nJi bo çalakkirina vê fonksiyonê em hewceyî van destûran in:\n\n• Skana Bluetoothê: Ji bo dîtina hevalên Reticulum yên nêzîk\n• Girêdana Bluetoothê: Ji bo girêdanê bi hevalan re\n• Belavkirina Bluetoothê: Ji bo ragihandina hebûna te ji cîhazên din re\n\nEv destûr dihêlin ku Boran toreke ragihandinê ya nemerkezî û bê înternet biafirîne.</string>
+
+    <!-- Network Interfaces (auto-added) -->
+    <string name="if_title">Rûyên Torê</string>
+    <string name="if_apply_changes">Guhertinan Bisepîne</string>
+    <string name="if_add_interface">Rûyê Zêde Bike</string>
+    <string name="if_type_interface_desc">Rûyê %1$s</string>
+    <string name="if_ble_perm_required">Destûra BLE pêwîst e</string>
+    <string name="action_grant">Bide</string>
+    <string name="action_back">Vegere</string>
+    <string name="action_ok">Baş e</string>
+    <string name="action_view_details">Hûrgilî Bibîne</string>
+    <string name="if_peer_count_one">%1$d heval</string>
+    <string name="if_peer_count_other">%1$d heval</string>
+    <string name="if_delete_title">Rûyê Jêbibe?</string>
+    <string name="if_delete_text">Tu bawer î ku tu dixwazî \"%1$s\" jêbibî? Ev kar nayê vegerandin.</string>
+    <string name="if_applying_changes">Guhertin Tê Sepandin</string>
+    <string name="if_apply_failed_title">Sepandina Guhertinan Têk Çû</string>
+    <string name="if_apply_failed_text">Çewtiyek di sepandina veavakirinê de derket:</string>
+    <string name="if_select_type">Cureyê Rûyê Hilbijêre</string>
+    <string name="if_type_auto">Vedîtina Otomatîk</string>
+    <string name="if_type_tcp_client">Mişterî TCP</string>
+    <string name="if_type_ble">Bluetooth LE</string>
+    <string name="if_type_rnode">RNode LoRa</string>
+    <string name="if_type_tcp_server">Server TCP</string>
+    <string name="if_advanced">Pêşketî</string>
+    <string name="if_issue_title">Pirsgirêka Rûyê</string>
+    <string name="if_discovery_title">Vedîtina Rûyê</string>
+    <string name="if_discovery_count">Bi RNS Discovery %1$d rûyek hat dîtin</string>
+    <string name="if_discovery_empty">Vedîtin çalak e - hîn rûyek nehat dîtin</string>
+    <string name="if_discovery_hint">Ji bo veavakirina vedîtina RNS 1.1.x bitikîne</string>
 </resources>
 
